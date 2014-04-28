@@ -36,8 +36,21 @@
 #'
 load.ADV <- function(file.nm,folder.nm='/Users/jread/Documents/R/velocimeterK/supporting data/'){
   
-  
+  adv.dat.names <- c('burst.num','ensemble.num','velocity.X','velocity.Y','velocity.Z',
+                     'amplitude.X','amplitude.Y','amplitude.Z',
+                     'signal.rat.X','signal.rat.Y','signal.rat.Y',
+                     'correlation.X','correlation.Y','correlation.Z',
+                     'pressure','analog.1','analog.2','checksum')
   file.loc <- file.path(folder.nm,file.nm)
   data.v <- read.table(file.loc)
+  
+  names(data.v) <- adv.dat.names
+  
+  rmv.i <- data.v$checksum==1
+  if (any(rmv.i)){
+    warning('some checksum failures. Removing errant values')
+    data.v <- data.v[!rmv.i, ]
+  }
+  
   return(data.v)
 }
