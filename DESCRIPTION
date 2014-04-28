@@ -13,7 +13,7 @@ Copyright: This software is in the public domain because it contains materials
     official USGS copyright policy at
     http://www.usgs.gov/visual-id/credit_usgs.html#copyright
 Collate:
-    'ADV_Analysis_Testing.R'
+    'load.ADV.R'
 Depends:
     R (>= 2.15.0)
 Imports:
