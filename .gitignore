@@ -4,5 +4,13 @@
 # Example code in package build process
 *-Ex.R
 
+*Publications/
+*MATLAB/
+*Figures/
+*Documentation/
+
+**.Rproj
+
 # R data files from past sessions
 .Rdata
+.Rproj.user
