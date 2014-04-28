@@ -1,8 +1,11 @@
 rm(list=ls(all=TRUE))
-setwd("C:/Users/John Crawford/Dropbox/Nortek_ADV")
+
+data.dir <- '/Users/jread/Documents/R/velocimeterK/supporting data/'
+file.nm <- "ICACOS04.dat"
+file.loc <- file.path(data.dir,file.nm)
 library(oce)
 ##################################################
-data=read.table("ICACOS04.dat")
+data=read.table(file.loc)
 str(data)
 ################################################################################
 #Signal to Noise Ratio time series
@@ -31,12 +34,12 @@ mtext(side=2, line=2.5, quote(Velocity~(m~s^-1)))
 ###############################################################################
 #frequency spectra 
 Fs = 32 #frequency (Hz)
-d=density(sub$V5)
+d=density(data$V5)
 plot(d, type="p")
-xts = ts(sub$V5, frequency=Fs)
+xts = ts(data$V5, frequency=Fs)
 w = pwelch(xts)
 str(w)
-wavenum=2*pi*w$spec/mean(sub$V4)
+wavenum=2*pi*w$spec/mean(data$V4)
 plot(log10(w$freq), log10(wavenum), type="l", ylab="", xlab="", col="green", lwd=1.5)
 mtext(side=1, line=2.5, quote(log~Frequency~(Hz)))
 mtext(side=2, line=2.5, quote(log~Wavenumber~(m^2~sec^-3)))
