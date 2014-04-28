@@ -34,6 +34,8 @@ mtext(side=2, line=2.5, quote(Velocity~(m~s^-1)))
 ###############################################################################
 #frequency spectra 
 Fs = 32 #frequency (Hz)
+
+data = data[448526:548526, ]
 d=density(data$V5)
 plot(d, type="p")
 xts = ts(data$V5, frequency=Fs)
@@ -43,6 +45,6 @@ wavenum=2*pi*w$spec/mean(data$V4)
 plot(log10(w$freq), log10(wavenum), type="l", ylab="", xlab="", col="green", lwd=1.5)
 mtext(side=1, line=2.5, quote(log~Frequency~(Hz)))
 mtext(side=2, line=2.5, quote(log~Wavenumber~(m^2~sec^-3)))
-abline(v=log10(0.5), lty=2)
+abline(v=log10(0.5), lty=2) #looks like these came from Zappa ea 2003?
 abline(v=log10(8), lty=2)
 text(log(1.4), log(1), "Inertial Subrange")
