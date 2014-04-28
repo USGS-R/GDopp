@@ -15,6 +15,7 @@ Copyright: This software is in the public domain because it contains materials
 Collate:
     'load.ADV.R'
     'window.ADV.R'
+    'fit.epsilon.R'
 Depends:
     R (>= 2.15.0)
 Imports:
