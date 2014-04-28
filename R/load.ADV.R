@@ -1,25 +1,29 @@
-#'@title load data from velocimeter into data.frame
+#'@title load ADV data
+#'@description 
+#'Assumes the following format: \cr
+#'\tabular{rlll}{
+#'1 \tab Burst counter   \tab  \cr
+#'2 \tab Ensemble counter  \tab (1-65536)\cr
+#'3 \tab Velocity (Beam1|X|East)  \tab (m/s)\cr
+#'4 \tab Velocity (Beam2|Y|North) \tab (m/s)\cr
+#'5 \tab Velocity (Beam3|Z|Up)    \tab (m/s)\cr
+#'6 \tab Amplitude (Beam1)  \tab (counts) \cr
+#'7 \tab Amplitude (Beam2)  \tab (counts) \cr
+#'8 \tab Amplitude (Beam3)  \tab (counts) \cr
+#'9 \tab SNR (Beam1)  \tab (dB) \cr
+#'10 \tab SNR (Beam2)  \tab (dB) \cr
+#'11 \tab SNR (Beam3)  \tab (dB) \cr
+#'12 \tab Correlation (Beam1)  \tab (percent) \cr
+#'13 \tab Correlation (Beam2)  \tab (percent) \cr
+#'14 \tab Correlation (Beam3)  \tab (percent) \cr
+#'15 \tab Pressure \tab (dbar) \cr
+#'16 \tab Analog input 1 \cr
+#'17 \tab Analog input 2 \cr
+#'18 \tab Checksum \tab (1=failed)\cr
+#'}
 #'
-#'@details a \code{velocimeterK} function for loading sensor data from a file. Assumes the following format:
-#'  1   Burst counter
-#'  2   Ensemble counter                 (1-65536)
-#'  3   Velocity (Beam1|X|East)          (m/s)
-#'  4   Velocity (Beam2|Y|North)         (m/s)
-#'  5   Velocity (Beam3|Z|Up)            (m/s)
-#'  6   Amplitude (Beam1)                (counts)
-#'  7   Amplitude (Beam2)                (counts)
-#'  8   Amplitude (Beam3)                (counts)
-#'  9   SNR (Beam1)                      (dB)
-#'  10   SNR (Beam2)                      (dB)
-#'  11   SNR (Beam3)                      (dB)
-#'  12   Correlation (Beam1)              (%)
-#'  13   Correlation (Beam2)              (%)
-#'  14   Correlation (Beam3)              (%)
-#'  15   Pressure                         (dbar)
-#'  16   Analog input 1
-#'  17   Analog input 2
-#'  18   Checksum                         (1=failed)
-#'
+#'@details a \code{velocimeterK} function for loading sensor data from a file.\cr 
+
 #'@param \code{file.nm} a valid file name.
 #'@param \code{folder.nm} the folder where the data file resides.
 #'@return a velocimeterK data.frame.
