@@ -16,6 +16,8 @@ Collate:
     'load.ADV.R'
     'window.ADV.R'
     'fit.epsilon.R'
+    'v.calc.R'
+    'check.adv.R'
 Depends:
     R (>= 2.15.0)
 Imports:

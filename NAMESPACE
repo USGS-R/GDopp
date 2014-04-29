@@ -1,4 +1,6 @@
+export(check.adv)
 export(fit.epsilon)
 export(load.ADV)
+export(v.calc)
 export(window.ADV)
 import(oce)
