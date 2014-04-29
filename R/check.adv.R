@@ -27,6 +27,8 @@ check.adv <- function(chunk.adv,tests=NULL){
   
   
   #signal-to-noise ratio was greater than 15 db
+  
+  #failed	<-	do.call(match.fun(method),list(data.in=data.in,reject.criteria=reject.criteria))
   failed <- signal.noise.check(chunk.adv)
   return(failed)
   
@@ -38,7 +40,7 @@ signal.noise.check <- function(chunk.adv){
   s2n.rat.Y <- mean(chunk.adv$signal.rat.Y,na.rm=TRUE)
   s2n.rat.Z <- mean(chunk.adv$signal.rat.Z,na.rm=TRUE)
   failed = FALSE
-  if (any(c(s2n.rat.X,s2n.rat.Y,s2n.rat.Z)>threshold)){
+  if (any(c(s2n.rat.X,s2n.rat.Y,s2n.rat.Z) < threshold)){
     failed = TRUE
   }
   return(failed)
