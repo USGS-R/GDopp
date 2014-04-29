@@ -9,6 +9,11 @@
 #'@param \code{nu} Constant of proportionality
 #'@return a single k600 value
 #'@keywords epsilon2k
+#'@references
+#'Zappa, Christopher J., Wade R. McGillis, Peter A. Raymond, James B. Edson, Eric J. Hintsa, 
+#'Hendrik J. Zemmelink, John WH Dacey, and David T. Ho. 
+#'"Environmental turbulent mixing controls on air‐water gas exchange in marine and aquatic systems." 
+#'Geophysical Research Letters 34, no. 10 (2007).
 #'@examples 
 #'folder.nm <- '/Users/jread/Documents/R/velocimeterK/supporting data/'
 #'file.nm <- "ICACOS04.dat"
@@ -21,6 +26,10 @@
 
 epsilon2k <- function(epsilon,temperature=20,nu=0.2){
   
+  k.vis <- kinematic.vis(temperature)
+  m4s4 <- (100^4)*(3600^4)
+  e.k <- epsilon*k.vis*m4s4 #now in cm4/hr4
   
+  k600 <- nu*(e.k)^0.25*600^(-0.5)
   return(k600)
 }

@@ -31,5 +31,13 @@ chunk.adv <- window.adv[window.adv$window.idx==7, ]
 epsilon <- fit.epsilon(chunk.adv,freq=32)
 epsilon2k(epsilon,temperature=20,nu=0.2)
 }
+\references{
+  Zappa, Christopher J., Wade R. McGillis, Peter A.
+  Raymond, James B. Edson, Eric J. Hintsa, Hendrik J.
+  Zemmelink, John WH Dacey, and David T. Ho. "Environmental
+  turbulent mixing controls on air‐water gas exchange in
+  marine and aquatic systems." Geophysical Research Letters
+  34, no. 10 (2007).
+}
 \keyword{epsilon2k}
 
