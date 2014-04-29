@@ -1,5 +1,7 @@
 export(check.adv)
+export(epsilon2k)
 export(fit.epsilon)
+export(kinematic.vis)
 export(load.ADV)
 export(v.calc)
 export(window.ADV)
