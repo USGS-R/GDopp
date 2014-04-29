@@ -39,7 +39,7 @@ load.ADV <- function(file.nm,folder.nm='/Users/jread/Documents/R/velocimeterK/su
   drop.cols <- c('checksum')
   adv.dat.names <- c('burst.num','ensemble.num','velocity.X','velocity.Y','velocity.Z',
                      'amplitude.X','amplitude.Y','amplitude.Z',
-                     'signal.rat.X','signal.rat.Y','signal.rat.Y',
+                     'signal.rat.X','signal.rat.Y','signal.rat.Z',
                      'correlation.X','correlation.Y','correlation.Z',
                      'pressure','analog.1','analog.2','checksum')
   file.loc <- file.path(folder.nm,file.nm)
