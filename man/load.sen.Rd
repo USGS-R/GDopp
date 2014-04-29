@@ -2,7 +2,8 @@
 \alias{load.sen}
 \title{load sensor diagnostic data}
 \usage{
-  load.sen(folder.nm, file.nm)
+  load.sen(file.nm,
+    folder.nm = "/Users/jread/Documents/R/velocimeterK/supporting data/")
 }
 \arguments{
   \item{\code{file.nm}}{a valid file name.}

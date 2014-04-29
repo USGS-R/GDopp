@@ -30,6 +30,7 @@ epsilon2k <- function(epsilon,temperature=20,nu=0.2){
   m4s4 <- (100^4)*(3600^4)
   e.k <- epsilon*k.vis*m4s4 #now in cm4/hr4
   
+  # convert to m/day
   k600 <- nu*(e.k)^0.25*600^(-0.5)
   return(k600)
 }

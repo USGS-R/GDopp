@@ -32,8 +32,7 @@
 #'data.sen <- load.sen(file.nm=file.nm, folder.nm =folder.nm)
 #'@export
 #'
-load.sen <- function(folder.nm,file.nm){
-  
+load.sen <- function(file.nm,folder.nm='/Users/jread/Documents/R/velocimeterK/supporting data/'){
   adv.sen.names <- c('month','day','year','hour','minute','second',
                      'error.cd','status.cd','batt.v','sound.speed',
                      'heading','pitch','roll','temperature','analog.in','checksum')

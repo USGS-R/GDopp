@@ -21,4 +21,4 @@ calc.adv.k <- function(deploy.name='ALQ102'){
   plot(k.out,pch=1,main=deploy.name)
 }
 
-calc.adv.k()
+#calc.adv.k()
