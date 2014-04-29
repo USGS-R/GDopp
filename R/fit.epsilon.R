@@ -21,7 +21,7 @@
 #'file.nm <- "ICACOS04.dat"
 #'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 #'window.adv <- window.ADV(data.adv,freq=32,window.mins=10)
-#'fit.epsilon(window.adv[window.adv$window.idx==1, ],freq=32)
+#'fit.epsilon(window.adv[window.adv$window.idx==7, ],freq=32)
 #'@export
 #'
 
@@ -29,8 +29,11 @@ fit.epsilon <- function(chunk.adv,freq=32, lower= 0.5,upper=8){
   
   xts <- ts(chunk.adv$velocity.Z, frequency=freq)
   w <- pwelch(xts, plot=FALSE)
-  wavenum.spectra <- 2*pi*w$spec/mean(abs(chunk.adv$velocity.Y))
-  wavenum <- w$freq
+  wavenum.spectra <- w$spec
+  
+  v.mn <- v.calc(chunk.adv)
+  
+  wavenum <- 2*pi*w$freq/v.mn
   
   use.i <- lower <= wavenum & wavenum <= upper
   mod.num <- 0.52*(wavenum^(-5/3))

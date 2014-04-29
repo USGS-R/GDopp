@@ -34,7 +34,7 @@ folder.nm <- '/Users/jread/Documents/R/velocimeterK/supporting data/'
 file.nm <- "ICACOS04.dat"
 data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 window.adv <- window.ADV(data.adv,freq=32,window.mins=10)
-fit.epsilon(window.adv[window.adv$window.idx==1, ],freq=32)
+fit.epsilon(window.adv[window.adv$window.idx==7, ],freq=32)
 }
 \references{
   Zappa, Christopher J., Peter A. Raymond, Eugene A.
