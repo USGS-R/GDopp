@@ -20,6 +20,8 @@ Collate:
     'check.adv.R'
     'epsilon2k.R'
     'kinematic.vis.R'
+    'calc.adv.k.R'
+    'load.sen.R'
 Depends:
     R (>= 2.15.0)
 Imports:
