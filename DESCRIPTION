@@ -22,6 +22,7 @@ Collate:
     'kinematic.vis.R'
     'calc.adv.k.R'
     'load.sen.R'
+    'temp.calc.R'
 Depends:
     R (>= 2.15.0)
 Imports:
