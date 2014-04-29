@@ -17,7 +17,7 @@ calc.adv.k <- function(deploy.name='ALQ102'){
     chunk.adv <- window.adv[window.adv$window.idx==i, ]
     if (!check.adv(chunk.adv=chunk.adv)){
       epsilon <- fit.epsilon(chunk.adv,freq=freq)
-      k.out[i] <- epsilon2k(epsilon,temperature=temp.block[i],nu=nu) # need true temperature!!
+      k.out[i] <- epsilon2k(epsilon,temperature=temp.block[i],nu=nu) 
     } else {
       k.out[i] <- NA
     }
