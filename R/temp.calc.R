@@ -32,17 +32,19 @@ temp.calc <- function(data.sen,window.idx,freq=32){
   step.drop <- ceiling(hf.dif/freq)
   if (hf.dif<0){stop('actual high-frequency measurements should not exceed frequency*diagnostic file. Check files')}
   
-  if (step.drop==2 | step.drop==1){
-    #full first timepoint drop, partial drop on last, or no drop on last. Either are handled by seq(1,n,freq)
+  if (step.drop>=1){
     data.sen <- data.sen[-1, ]
-  } else if (step.drop>2){stop('missing multiple timepoints for high-frequency data. Check files')}
+  }
   
-  # do nothing for no drops
   
   t.win <- window.idx[seq(1,length(window.idx),freq)]
+  pad.num <- nrow(data.sen) - length(t.win)
+  rep.pad <- rep(x=tail(t.win,1),pad.num)
+  t.win <- c(t.win,rep.pad)
   un.blocks <- unique(t.win)
   
   temps <- data.sen$temperature
+  if (length(temps) != length(t.win)){stop('win blocks are different lengths than temperature array')}
   
   block.temp <- vector(length=length(un.blocks))
   for (i in seq_len(length(un.blocks))){
