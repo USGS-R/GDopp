@@ -19,7 +19,7 @@
 #'temp.calc(data.sen,window.adv$window.idx,freq=32)
 #'@export
 
-temp.calc <- function(data.sen,window.idx,freq=32){
+temp.calc <- function(data.sen,window.idx,freq=32,calc.time=FALSE){
   
   if (!is.null(dim(window.idx))){stop('window.idx must be a 1D vector')}
   
@@ -43,15 +43,34 @@ temp.calc <- function(data.sen,window.idx,freq=32){
   t.win <- c(t.win,rep.pad)
   un.blocks <- unique(t.win)
   
+  length.out <- length(un.blocks)
   temps <- data.sen$temperature
+
   if (length(temps) != length(t.win)){stop('win blocks are different lengths than temperature array')}
   
-  block.temp <- vector(length=length(un.blocks))
+  block.temp <- vector(length=length.out)
+  time <- rep(as.POSIXct('1900-01-01'),length.out)
   for (i in seq_len(length(un.blocks))){
     block.temp[i] <- mean(temps[t.win==un.blocks[i]])
+    if (calc.time){
+      time[i] <- get.sen.time(chunk.sen=data.sen[t.win==un.blocks[i], ])
+    }
   }
+
+  if (calc.time){
+    return(data.frame("time"=time,"temperature"=block.temp))
+  } else {
+    return(block.temp)
+  }
+}
+
+get.sen.time <- function(chunk.sen){
+  d.vals <- chunk.sen[, 1:6]
+  d.tail <- as.numeric(tail(d.vals,1))
+  d.head <- as.numeric(head(d.vals,1))
+  date.1 <- ISOdatetime(d.head[3],d.head[1],d.head[2],d.head[4],d.head[5],d.head[6])
+  date.2 <- ISOdatetime(d.tail[3],d.tail[1],d.tail[2],d.tail[4],d.tail[5],d.tail[6])
   
-  
-  return(block.temp)
-  
+  mn.date <- mean(c(date.1,date.2))
+  return(mn.date)
 }

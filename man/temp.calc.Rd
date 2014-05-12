@@ -2,7 +2,8 @@
 \alias{temp.calc}
 \title{block-averaged temperature}
 \usage{
-  temp.calc(data.sen, window.idx, freq = 32)
+  temp.calc(data.sen, window.idx, freq = 32,
+    calc.time = FALSE)
 }
 \arguments{
   \item{\code{data.sens}}{a data.frame created with

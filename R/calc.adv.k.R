@@ -9,7 +9,9 @@ calc.adv.k <- function(deploy.name='ALQ102'){
   num.wins <- length(unique(window.adv$window.idx))
   
   data.sen <- load.sen(file.nm=paste0(deploy.name,'.sen'))
-  temp.block <- temp.calc(data.sen,window.adv$window.idx,freq=freq)
+  temp.df <- temp.calc(data.sen,window.adv$window.idx,freq=freq,calc.time=TRUE)
+  temp.block = temp.df$temperature
+  temp.time <- temp.df$time
   
   k.out <- vector(length=num.wins)
   
@@ -23,7 +25,7 @@ calc.adv.k <- function(deploy.name='ALQ102'){
     }
   }
   
-  plot(k.out,pch=1,main=deploy.name)
+  plot(temp.time,k.out,pch=1,main=deploy.name)
 }
 
-calc.adv.k()
+#calc.adv.k()
