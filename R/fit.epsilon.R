@@ -25,7 +25,7 @@
 #'@export
 #'
 
-fit.epsilon <- function(chunk.adv,freq=32, lower= 5,upper=80){
+fit.epsilon <- function(chunk.adv,freq=32, lower= 20,upper=80){
   
   xts <- ts(chunk.adv$velocity.Z, frequency=freq)
   w <- pwelch(xts, plot=FALSE)
@@ -36,8 +36,20 @@ fit.epsilon <- function(chunk.adv,freq=32, lower= 5,upper=80){
   wavenum <- 2*pi*w$freq/v.mn # in radians/m
   
   use.i <- lower <= wavenum & wavenum <= upper
-  mod.num <- 0.52*(wavenum^(-5/3))
-  epsilon.2.3 <- lm(wavenum.spectra[use.i]~mod.num[use.i] )$coeff[[2]]
-  epsilon <- epsilon.2.3^(3/2)
+  
+  f <- function (x, w.s, k){
+    
+    eps.2.3 <- x^(2/3)
+    epsilon.rmse <- rmse(log((0.52*eps.2.3*k)*k^(-5/3)),log(w.s))
+    
+    return(epsilon.rmse)
+  }
+  epsilon <- optimize(f, c(10^(-10), 1), tol = 0.0001, w.s = wavenum.spectra[use.i], k = wavenum[use.i])$minimum
+  
   return(epsilon)
+}
+
+rmse <- function(actual,predicted){
+  rmse <- sqrt(sum((actual-predicted)^2)/length(actual))
+  return(rmse)
 }
