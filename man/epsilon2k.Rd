@@ -25,13 +25,14 @@
 \examples{
 folder.nm <- '/Users/jread/Documents/R/velocimeterK/supporting data/'
 file.nm <- "ICACOS04.dat"
+block.use <- 7
 data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 window.adv <- window.ADV(data.adv,freq=32,window.mins=10)
 data.sen <- load.sen(paste0(substr(file.nm,start=1,stop=nchar(file.nm)-4),'.sen'))
 temp.adv <- temp.calc(data.sen,window.adv$window.idx,freq=32)
-chunk.adv <- window.adv[window.adv$window.idx==7, ]
+chunk.adv <- window.adv[window.adv$window.idx==block.use, ]
 epsilon <- fit.epsilon(chunk.adv,freq=32)
-epsilon2k(epsilon,temperature=temp.adv,nu=0.2)
+epsilon2k(epsilon,temperature=temp.adv[block.use],nu=0.2)
 }
 \references{
   Zappa, Christopher J., Wade R. McGillis, Peter A.
