@@ -45,3 +45,16 @@ signal.noise.check <- function(chunk.adv){
   }
   return(failed)
 }
+
+frozen.turb.check <- function(chunk.adv){
+  failed = FALSE
+  V <- v.calc(chunk.adv)
+  v. <- chunk.adv$velocity.Z
+  mn.v. <- mean(v.) # mean of fluctuating velocity
+  nrm.v. <- v.-mn.v.
+  r.v. <- sqrt(sum(nrm.v.^2)/length(nrm.v.))
+  if ((r.v./V)^3 >= 1){
+    failed = TRUE
+  }
+  return(failed)
+}
