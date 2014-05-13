@@ -12,7 +12,7 @@
 #'@references
 #'Zappa, Christopher J., Wade R. McGillis, Peter A. Raymond, James B. Edson, Eric J. Hintsa, 
 #'Hendrik J. Zemmelink, John WH Dacey, and David T. Ho. 
-#'"Environmental turbulent mixing controls on air‐water gas exchange in marine and aquatic systems." 
+#'"Environmental turbulent mixing controls on air/water gas exchange in marine and aquatic systems." 
 #'Geophysical Research Letters 34, no. 10 (2007).
 #'@examples 
 #'folder.nm <- '/Users/jread/Documents/R/velocimeterK/supporting data/'
