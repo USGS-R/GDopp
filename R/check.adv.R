@@ -51,6 +51,11 @@ signal.noise.check <- function(chunk.adv){
   return(failed)
 }
 
+beam.correlation <- function(chunk.adv){
+  # Lien & D'Asaro 2006
+  #Bursts were discarded if the average correlation of any of three ADV beams was lower than 0.9
+}
+
 frozen.turb.check <- function(chunk.adv){
   failed = FALSE
   V <- v.calc(chunk.adv)
