@@ -17,11 +17,13 @@
 #'@export
 v.calc <- function(chunk.adv){
   
-  veloc.sqrd <- chunk.adv$velocity.Y^2 + chunk.adv$velocity.X^2
-  veloc <- sqrt(veloc.sqrd)
   
-  mn.veloc <- mean(veloc,na.rm=TRUE)
+  veloc.cube <- chunk.adv$velocity.Y^2 + chunk.adv$velocity.X^2 + chunk.adv$velocity.Z^2
+  veloc <- veloc.cube^(1/3)
+  del.t = 1 #delta time, will be divided off, so is arbitrary unless it is irregular
+  dist.traveled <- veloc*del.t
+  adv.veloc <- sum(dist.traveled)/length(dist.traveled)
   
-  return(mn.veloc)
+  return(adv.veloc)
   
 }
