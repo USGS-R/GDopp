@@ -19,14 +19,14 @@ calc.adv.k <- function(deploy.name='ALQ102'){
     cat(i); cat(' of '); cat(num.wins); cat('\n')
     chunk.adv <- window.adv[window.adv$window.idx==i, ]
     if (!check.adv(chunk.adv=chunk.adv)){
-      epsilon <- fit.epsilon(chunk.adv,freq=freq,lower= 20,upper=80,diagnostic=TRUE)
+      epsilon <- fit.epsilon(chunk.adv,freq=freq,lower= 10,upper=50,diagnostic=TRUE)
       k.out[i] <- epsilon2k(epsilon,temperature=temp.block[i],nu=nu) 
     } else {
       k.out[i] <- NA
     }
   }
   
-  plot(temp.time,k.out,pch=1,main=deploy.name)
+  plot(temp.time,k.out,pch=1,main=deploy.name,ylim=c(0,30))
 }
 
 #calc.adv.k()
