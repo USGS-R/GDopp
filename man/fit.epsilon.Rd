@@ -2,7 +2,8 @@
 \alias{fit.epsilon}
 \title{fit epsilon from block of ADV data}
 \usage{
-  fit.epsilon(chunk.adv, freq = 32, lower = 0.5, upper = 8)
+  fit.epsilon(chunk.adv, freq = 32, lower = 20, upper = 80,
+    diagnostic = FALSE)
 }
 \arguments{
   \item{\code{chunk.adv}}{a data.frame created with
@@ -16,6 +17,8 @@
 
   \item{\code{upper}}{a numeric, in Hz, that represents the
   upper bounds for range of epsilon calculation}
+
+  \item{\code{diagnostic}}{a boolean for diagnostic plot}
 }
 \value{
   a single value of epsilon estimating from the temporal
