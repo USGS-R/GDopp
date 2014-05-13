@@ -33,25 +33,26 @@ fit.epsilon <- function(chunk.adv,freq=32, lower= 20,upper=80,diagnostic = FALSE
   wavenum.spectra <- w$spec
   
   v.mn <- v.calc(chunk.adv)
+  #v.mn = 1 # temporary bypass
   
   wavenum <- 2*pi*w$freq/v.mn # in radians/m
   lower.k = lower/v.mn
   upper.k = upper/v.mn
   
+  
   use.i <- lower.k <= wavenum & wavenum <= upper.k
   
-  f <- function (x, w.s, k){
+  eps <- function (w.s, k){
     
-    eps.2.3 <- x^(2/3)
-    e.log = x
-    epsilon.rmse <- rmse(log(0.52*k^(-5/3)*eps.2.3),log(w.s))
+    in.bracket <- w.s*(k^(5/3))
+    averaging <- in.bracket^(3/2)
+    epsilon <- 1.04*mean(averaging)
     
-    return(epsilon.rmse)
+    return(epsilon)
   }
   
-  epsilon.2.3 <- optimize(f, c(1e-10,1), tol = 0.0001, w.s = wavenum.spectra[use.i], k = wavenum[use.i])$minimum
-  
-  epsilon = epsilon.2.3^3/2
+  epsilon <- eps(w.s = wavenum.spectra[use.i], k = wavenum[use.i])
+
   if (diagnostic){
     
     plot(wavenum,wavenum.spectra,log='xy')
