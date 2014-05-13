@@ -33,7 +33,6 @@ fit.epsilon <- function(chunk.adv,freq=32, lower= 20,upper=80,diagnostic = FALSE
   wavenum.spectra <- w$spec
   
   v.mn <- v.calc(chunk.adv)
-  #v.mn = 1 # temporary bypass
   
   wavenum <- 2*pi*w$freq/v.mn # in radians/m
   lower.k = lower/v.mn
@@ -41,6 +40,14 @@ fit.epsilon <- function(chunk.adv,freq=32, lower= 20,upper=80,diagnostic = FALSE
   
   
   use.i <- lower.k <= wavenum & wavenum <= upper.k
+  
+  pulse.averaging <- function(w.s,freq,del.t=1/32){
+    
+    denom <- (sin(pi*freq*del.t)/(pi*freq*del.t))^2
+    
+    pc.w = w.s/denom
+    return(pc.w)  
+  }
   
   eps <- function (w.s, k){
     
@@ -51,14 +58,16 @@ fit.epsilon <- function(chunk.adv,freq=32, lower= 20,upper=80,diagnostic = FALSE
     return(epsilon)
   }
   
-  epsilon <- eps(w.s = wavenum.spectra[use.i], k = wavenum[use.i])
+  w.s <- pulse.averaging(wavenum.spectra,w$freq,del.t=1/freq)
+  epsilon <- eps(w.s[use.i], k = wavenum[use.i])
 
   if (diagnostic){
     
     plot(wavenum,wavenum.spectra,log='xy')
+    points(wavenum,w.s,col='red',cex=.2)
     abline(v=lower.k)
     abline(v=upper.k)
-    lines(wavenum,0.52*epsilon.2.3*wavenum^(-5/3),col='green')
+    lines(wavenum,0.52*(epsilon^(2/3))*wavenum^(-5/3),col='green')
   }
   
   return(epsilon)
