@@ -42,23 +42,22 @@ fit.epsilon <- function(chunk.adv,freq=32, lower= 20,upper=80,diagnostic = FALSE
   
   f <- function (x, w.s, k){
     
-    #eps.2.3 <- x^(2/3)
+    eps.2.3 <- x^(2/3)
     e.log = x
-    epsilon.rmse <- rmse(log(0.52*k^(-5/3))+e.log,log(w.s))
+    epsilon.rmse <- rmse(log(0.52*k^(-5/3)*eps.2.3),log(w.s))
     
     return(epsilon.rmse)
   }
   
-  epsilon.2.3.log <- optimize(f, c(-100,1000), tol = 0.0001, w.s = wavenum.spectra[use.i], k = wavenum[use.i])$minimum
+  epsilon.2.3 <- optimize(f, c(1e-10,1), tol = 0.0001, w.s = wavenum.spectra[use.i], k = wavenum[use.i])$minimum
   
-  epsilon = (exp(epsilon.2.3.log))^3/2
+  epsilon = epsilon.2.3^3/2
   if (diagnostic){
     
     plot(wavenum,wavenum.spectra,log='xy')
     abline(v=lower.k)
     abline(v=upper.k)
-    eps.2.3 = epsilon^(2/3)
-    lines(wavenum,0.52*eps.2.3*wavenum^(-5/3),col='green')
+    lines(wavenum,0.52*epsilon.2.3*wavenum^(-5/3),col='green')
   }
   
   return(epsilon)
