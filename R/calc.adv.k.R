@@ -1,5 +1,6 @@
 calc.adv.k <- function(deploy.name='ALQ102'){
   
+  require("velocimeterK")
   freq <- 32
   nu <- 0.2
   folder.nm <- '/Users/jread/Documents/R/velocimeterK/supporting data/'

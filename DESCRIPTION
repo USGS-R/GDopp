@@ -1,7 +1,7 @@
-Package: velocimeterK
+Package: GDopp
 Type: Package
 Title: processing of ADV data
-Version: 0.0.1
+Version: 0.0.2
 Date: 2013-03-01
 Author: Jordan S Read
 Maintainer: Jordan S Read <jread@usgs.gov>
