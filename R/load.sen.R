@@ -20,19 +20,19 @@
 #'16 \tab Checksum \tab (1=failed)\cr
 #'}
 #'
-#'@details a \code{velocimeterK} function for loading sensor diagnostic data from a file.\cr 
+#'@details a \code{GDopp} function for loading sensor diagnostic data from a file.\cr 
 
 #'@param \code{file.nm} a valid file name.
 #'@param \code{folder.nm} the folder where the data file resides.
-#'@return a velocimeterK data.frame.
+#'@return a GDopp data.frame.
 #'@keywords load.sen
 #'@examples 
-#'folder.nm <- '/Users/jread/Documents/R/velocimeterK/supporting data/'
+#'folder.nm <- '/Users/jread/Documents/R/GDopp/supporting data/'
 #'file.nm <- "ICACOS04.sen"
 #'data.sen <- load.sen(file.nm=file.nm, folder.nm =folder.nm)
 #'@export
 #'
-load.sen <- function(file.nm,folder.nm='/Users/jread/Documents/R/velocimeterK/supporting data/'){
+load.sen <- function(file.nm,folder.nm='/Users/jread/Documents/R/GDopp/supporting data/'){
   adv.sen.names <- c('month','day','year','hour','minute','second',
                      'error.cd','status.cd','batt.v','sound.speed',
                      'heading','pitch','roll','temperature','analog.in','checksum')
