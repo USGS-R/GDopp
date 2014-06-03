@@ -1,9 +1,9 @@
 calc.adv.k <- function(deploy.name='ALQ102'){
   
-  require("velocimeterK")
+  require("GDopp")
   freq <- 32
   nu <- 0.2
-  folder.nm <- '/Users/jread/Documents/R/velocimeterK/supporting data/'
+  folder.nm <- '/Users/jread/Documents/R/GDopp/supporting data/'
   file.nm <- paste0(deploy.name,'.dat')
   data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
   window.adv <- window.ADV(data.adv,freq=freq,window.mins=10)
