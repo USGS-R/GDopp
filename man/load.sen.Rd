@@ -3,7 +3,7 @@
 \title{load sensor diagnostic data}
 \usage{
   load.sen(file.nm,
-    folder.nm = "/Users/jread/Documents/R/velocimeterK/supporting data/")
+    folder.nm = "/Users/jread/Documents/R/GDopp/supporting data/")
 }
 \arguments{
   \item{\code{file.nm}}{a valid file name.}
@@ -12,7 +12,7 @@
   resides.}
 }
 \value{
-  a velocimeterK data.frame.
+  a GDopp data.frame.
 }
 \description{
   Assumes the following format: \cr \tabular{rlll}{ 1 \tab
@@ -27,11 +27,11 @@
   \tab (1=failed)\cr }
 }
 \details{
-  a \code{velocimeterK} function for loading sensor
-  diagnostic data from a file.\cr
+  a \code{GDopp} function for loading sensor diagnostic
+  data from a file.\cr
 }
 \examples{
-folder.nm <- '/Users/jread/Documents/R/velocimeterK/supporting data/'
+folder.nm <- '/Users/jread/Documents/R/GDopp/supporting data/'
 file.nm <- "ICACOS04.sen"
 data.sen <- load.sen(file.nm=file.nm, folder.nm =folder.nm)
 }
