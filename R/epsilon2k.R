@@ -2,7 +2,7 @@
 #'@description 
 #'Uses Zappa et al. 2007 to convert epsilon to k600.  \cr
 #'
-#'@details a \code{velocimeterK} function for converting epsilon to k600.\cr 
+#'@details a \code{GDopp} function for converting epsilon to k600.\cr 
 #'
 #'@param \code{epsilon} Turbulence dissipation rate
 #'@param \code{temperature} Temperature in °C of near surface water
@@ -15,7 +15,7 @@
 #'"Environmental turbulent mixing controls on air/water gas exchange in marine and aquatic systems." 
 #'Geophysical Research Letters 34, no. 10 (2007).
 #'@examples 
-#'folder.nm <- '/Users/jread/Documents/R/velocimeterK/supporting data/'
+#'folder.nm <- '/Users/jread/Documents/R/GDopp/supporting data/'
 #'file.nm <- "ICACOS04.dat"
 #'block.use <- 7
 #'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
