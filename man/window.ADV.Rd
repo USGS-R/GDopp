@@ -15,18 +15,18 @@
   desired for outputs}
 }
 \value{
-  a velocimeterK data.frame with a column for window.idx.
+  a GDopp data.frame with a column for window.idx.
 }
 \description{
   creates index values for ADV data according to temporal
   windowing \cr
 }
 \details{
-  a \code{velocimeterK} function for splitting sensor data
-  into temporal segments.\cr
+  a \code{GDopp} function for splitting sensor data into
+  temporal segments.\cr
 }
 \examples{
-folder.nm <- '/Users/jread/Documents/R/velocimeterK/supporting data/'
+folder.nm <- '/Users/jread/Documents/R/GDopp/supporting data/'
 file.nm <- "ICACOS04.dat"
 data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 window.adv <- window.ADV(data.adv,freq=32,window.mins=10)

@@ -22,19 +22,19 @@
 #'18 \tab Checksum \tab (1=failed)\cr
 #'}
 #'
-#'@details a \code{velocimeterK} function for loading sensor data from a file.\cr 
+#'@details a \code{GDopp} function for loading sensor data from a file.\cr 
 
 #'@param \code{file.nm} a valid file name.
 #'@param \code{folder.nm} the folder where the data file resides.
-#'@return a velocimeterK data.frame.
+#'@return a GDopp data.frame.
 #'@keywords load.ADV
 #'@examples 
-#'folder.nm <- '/Users/jread/Documents/R/velocimeterK/supporting data/'
+#'folder.nm <- '/Users/jread/Documents/R/GDopp/supporting data/'
 #'file.nm <- "ICACOS04.dat"
 #'data.v <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 #'@export
 #'
-load.ADV <- function(file.nm,folder.nm='/Users/jread/Documents/R/velocimeterK/supporting data/'){
+load.ADV <- function(file.nm,folder.nm='/Users/jread/Documents/R/GDopp/supporting data/'){
   
   drop.cols <- c('checksum')
   adv.dat.names <- c('burst.num','ensemble.num','velocity.X','velocity.Y','velocity.Z',

@@ -19,11 +19,11 @@
   Uses Zappa et al. 2007 to convert epsilon to k600.  \cr
 }
 \details{
-  a \code{velocimeterK} function for converting epsilon to
+  a \code{GDopp} function for converting epsilon to
   k600.\cr
 }
 \examples{
-folder.nm <- '/Users/jread/Documents/R/velocimeterK/supporting data/'
+folder.nm <- '/Users/jread/Documents/R/GDopp/supporting data/'
 file.nm <- "ICACOS04.dat"
 block.use <- 7
 data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)

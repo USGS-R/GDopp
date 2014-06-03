@@ -3,7 +3,7 @@
 \title{load ADV data}
 \usage{
   load.ADV(file.nm,
-    folder.nm = "/Users/jread/Documents/R/velocimeterK/supporting data/")
+    folder.nm = "/Users/jread/Documents/R/GDopp/supporting data/")
 }
 \arguments{
   \item{\code{file.nm}}{a valid file name.}
@@ -12,7 +12,7 @@
   resides.}
 }
 \value{
-  a velocimeterK data.frame.
+  a GDopp data.frame.
 }
 \description{
   Assumes the following format: \cr \tabular{rlll}{ 1 \tab
@@ -31,11 +31,11 @@
   input 2 \cr 18 \tab Checksum \tab (1=failed)\cr }
 }
 \details{
-  a \code{velocimeterK} function for loading sensor data
-  from a file.\cr
+  a \code{GDopp} function for loading sensor data from a
+  file.\cr
 }
 \examples{
-folder.nm <- '/Users/jread/Documents/R/velocimeterK/supporting data/'
+folder.nm <- '/Users/jread/Documents/R/GDopp/supporting data/'
 file.nm <- "ICACOS04.dat"
 data.v <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 }
