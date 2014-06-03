@@ -2,7 +2,7 @@
 #'@description 
 #'solves for epsilon from ADV data in the inertial subrange assuming Zappa et al. 2003  \cr
 #'
-#'@details a \code{velocimeterK} function for splitting sensor data into temporal segments.\cr 
+#'@details a \code{GDopp} function for splitting sensor data into temporal segments.\cr 
 #'
 #'@references
 #'Zappa, Christopher J., Peter A. Raymond, Eugene A. Terray, and Wade R. McGillis. 
@@ -18,7 +18,7 @@
 #'@keywords fit.epsilon
 #'@import oce
 #'@examples 
-#'folder.nm <- '/Users/jread/Documents/R/velocimeterK/supporting data/'
+#'folder.nm <- '/Users/jread/Documents/R/GDopp/supporting data/'
 #'file.nm <- "ICACOS04.dat"
 #'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 #'window.adv <- window.ADV(data.adv,freq=32,window.mins=10)
