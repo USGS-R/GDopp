@@ -12,18 +12,9 @@ Copyright: This software is in the public domain because it contains materials
     the United States Department of Interior. For more information, see the
     official USGS copyright policy at
     http://www.usgs.gov/visual-id/credit_usgs.html#copyright
-Collate:
-    'load.ADV.R'
-    'window.ADV.R'
-    'fit.epsilon.R'
-    'v.calc.R'
-    'check.adv.R'
-    'epsilon2k.R'
-    'kinematic.vis.R'
-    'calc.adv.k.R'
-    'load.sen.R'
-    'temp.calc.R'
 Depends:
     R (>= 2.15.0)
 Imports:
     oce
+Suggests:
+    roxygen2
