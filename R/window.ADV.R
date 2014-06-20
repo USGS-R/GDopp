@@ -17,7 +17,6 @@
 #'window.adv <- window.ADV(data.adv,freq=32,window.mins=10)
 #'}
 #'@export
-#'
 window.ADV <- function(data.adv,freq=32,window.mins=10){
   
   secs2mins <- 60 # number of seconds in a minute
