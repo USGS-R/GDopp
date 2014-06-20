@@ -15,14 +15,14 @@
 #'@param upper a numeric, in Hz, that represents the upper bounds for range of epsilon calculation
 #'@param diagnostic a boolean for diagnostic plot
 #'@return a single value of epsilon estimating from the temporal block given. 
-#'@keywords fit.epsilon
+#'@keywords methods, math
 #'@import oce
 #'@examples 
 #'\dontrun{
 #'folder.nm <- '../../../Desktop/Science Projects/GDopp/supporting data/'
 #'file.nm <- "ICACOS04.dat"
 #'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
-#'window.adv <- window.ADV(data.adv,freq=32,window.mins=10)
+#'window.adv <- window_ADV(data.adv,freq=32,window.mins=10)
 #'fit.epsilon(window.adv[window.adv$window.idx==7, ],freq=32)
 #'}
 #'@export

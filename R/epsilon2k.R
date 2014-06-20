@@ -23,7 +23,7 @@
 #'window.adv <- window.ADV(data.adv,freq=32,window.mins=10)
 #'data.sen <- load.sen(paste0(substr(file.nm,start=1,stop=nchar(file.nm)-4),'.sen'))
 #'temp.adv <- temp.calc(data.sen,window.adv$window.idx,freq=32)
-#'chunk.adv <- window.adv[window.adv$window.idx==block.use, ]
+#'chunk.adv <- window_adv[window.adv$window.idx==block.use, ]
 #'epsilon <- fit.epsilon(chunk.adv,freq=32)
 #'epsilon2k(epsilon,temperature=temp.adv[block.use],nu=0.2)
 #'}

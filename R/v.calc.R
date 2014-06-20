@@ -12,7 +12,7 @@
 #'folder.nm <- '../../../Desktop/Science Projects/GDopp/supporting data/'
 #'file.nm <- "ICACOS04.dat"
 #'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
-#'window.adv <- window.ADV(data.adv,freq=32,window.mins=10)
+#'window.adv <- window_ADV(data.adv,freq=32,window.mins=10)
 #'chunk.adv <- window.adv[window.adv$window.idx==7, ]
 #'v.calc(chunk.adv)
 #'}

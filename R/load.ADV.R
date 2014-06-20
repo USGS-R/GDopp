@@ -27,7 +27,7 @@
 #'@param file.nm a valid file name.
 #'@param folder.nm the folder where the data file resides.
 #'@return a GDopp data.frame.
-#'@keywords load.ADV
+#'@keywords methods
 #'@examples 
 #'folder.nm <- '../../../Desktop/Science Projects/GDopp/supporting data/'
 #'file.nm <- "ICACOS04.dat"

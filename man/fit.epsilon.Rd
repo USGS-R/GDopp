@@ -31,7 +31,7 @@ a \code{GDopp} function for splitting sensor data into temporal segments.\cr
 folder.nm <- '../../../Desktop/Science Projects/GDopp/supporting data/'
 file.nm <- "ICACOS04.dat"
 data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
-window.adv <- window.ADV(data.adv,freq=32,window.mins=10)
+window.adv <- window_ADV(data.adv,freq=32,window.mins=10)
 fit.epsilon(window.adv[window.adv$window.idx==7, ],freq=32)
 }
 }
@@ -40,5 +40,6 @@ Zappa, Christopher J., Peter A. Raymond, Eugene A. Terray, and Wade R. McGillis.
 "Variation in surface turbulence and the gas transfer velocity over a tidal cycle in a macro-tidal estuary."
 Estuaries 26, no. 6 (2003): 1401-1415.
 }
-\keyword{fit.epsilon}
+\keyword{math}
+\keyword{methods,}
 

@@ -3,10 +3,10 @@ calc.adv.k <- function(deploy.name='ALQ102'){
   require("GDopp")
   freq <- 32
   nu <- 0.2
-  folder.nm <- '/Users/jread/Documents/R/GDopp/supporting data/'
+  folder.nm <- '../../../Desktop/Science Projects/GDopp/supporting data/'
   file.nm <- paste0(deploy.name,'.dat')
   data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
-  window.adv <- window.ADV(data.adv,freq=freq,window.mins=10)
+  window.adv <- window_ADV(data.adv,freq=freq,window.mins=10)
   
   
   data.sen <- load.sen(file.nm=paste0(deploy.name,'.sen'))

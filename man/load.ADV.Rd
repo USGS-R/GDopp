@@ -45,5 +45,5 @@ folder.nm <- '../../../Desktop/Science Projects/GDopp/supporting data/'
 file.nm <- "ICACOS04.dat"
 data.v <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 }
-\keyword{load.ADV}
+\keyword{methods}
 
