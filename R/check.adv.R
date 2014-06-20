@@ -24,24 +24,27 @@
 #'folder.nm <- '../../../Desktop/Science Projects/GDopp/supporting data/'
 #'file.nm <- "ICACOS04.dat"
 #'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
-#'window.adv <- window.ADV(data.adv,freq=32,window.mins=10)
+#'window.adv <- window_ADV(data.adv,freq=32,window.mins=10)
 #'chunk.adv <- window.adv[window.adv$window.idx==7, ]
-#'check.adv(chunk.adv)
+#'check.adv(chunk.adv,tests=c('signal.noise.check','frozen.turb.check'))
 #'}
 #'@export
-
-check.adv <- function(chunk.adv,tests=NULL){
-  
+check.adv <- function(chunk.adv,tests='signal.noise.check'){
   
   #signal-to-noise ratio was greater than 15 db
   
-  #failed	<-	do.call(match.fun(method),list(data.in=data.in,reject.criteria=reject.criteria))
-  failed <- signal.noise.check(chunk.adv)
+  fails = vector(length = length(tests))
+  for (i in seq_len(length(tests))){
+    fails[i] <- do.call(match.fun(tests[i]),list(chunk.adv=chunk.adv))
+  }
+
+  failed <- ifelse(any(fails),TRUE,FALSE)
   return(failed)
   
 }
-
+#'@export
 signal.noise.check <- function(chunk.adv){
+
   threshold <- 15
   s2n.rat.X <- mean(chunk.adv$signal.rat.X,na.rm=TRUE)
   s2n.rat.Y <- mean(chunk.adv$signal.rat.Y,na.rm=TRUE)
@@ -53,11 +56,20 @@ signal.noise.check <- function(chunk.adv){
   return(failed)
 }
 
-beam.correlation <- function(chunk.adv){
-  # Lien & D'Asaro 2006
+#'@references
+#'Lien, Ren-Chieh, and Eric A. D'Asaro. \emph{Measurement of turbulent kinetic energy dissipation rate with a Lagrangian float.}
+#' Journal of Atmospheric and Oceanic Technology 23, no. 7 (2006): 964-976.
+#'@export
+beam.correlation.check <- function(chunk.adv,threshold = 90){
+  x1 = mean(chunk.adv$correlation.X,na.rm = T)
+  x2 = mean(chunk.adv$correlation.Y,na.rm = T)
+  x3 = mean(chunk.adv$correlation.Z,na.rm = T)
+  
+  failed = ifelse(any(c(x1,x2,x3) > threshold), TRUE, FALSE)
+  return(failed)
   #Bursts were discarded if the average correlation of any of three ADV beams was lower than 0.9
 }
-
+#'@export
 frozen.turb.check <- function(chunk.adv){
   failed = FALSE
   V <- v.calc(chunk.adv)
