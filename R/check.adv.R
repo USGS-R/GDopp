@@ -5,7 +5,7 @@
 #'@details a \code{GDopp} function for checking data quality.\cr 
 #'
 #'@param chunk.adv a data.frame created with load.ADV, with the window.idx column
-#'@param tests a character array of test names
+#'@param tests a character array of test names, or 'all' to run all tests
 #'@return failed, T or F
 #'@keywords check.adv
 #'@references
@@ -26,13 +26,18 @@
 #'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 #'window.adv <- window_ADV(data.adv,freq=32,window.mins=10)
 #'chunk.adv <- window.adv[window.adv$window.idx==7, ]
-#'check.adv(chunk.adv,tests=c('signal.noise.check','frozen.turb.check'))
+#'check.adv(chunk.adv,tests=c('signal.noise.check_adv','frozen.turb.check_adv'))
 #'}
 #'@export
-check.adv <- function(chunk.adv,tests='signal.noise.check'){
+check.adv <- function(chunk.adv,tests='all'){
   
-  #signal-to-noise ratio was greater than 15 db
+  if (is.null(tests)){stop("cannot perform check without any tests specified. use \"all\" for all tests")}
   
+  if (tests[1]=='all'){
+    pub.fun <- ls(getNamespace("GDopp"), all.names=TRUE)
+    tests <- pub.fun[grepl('check_adv?', pub.fun, ignore.case=TRUE)]
+  }
+
   fails = vector(length = length(tests))
   for (i in seq_len(length(tests))){
     fails[i] <- do.call(match.fun(tests[i]),list(chunk.adv=chunk.adv))
