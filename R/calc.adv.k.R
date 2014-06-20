@@ -19,7 +19,8 @@ calc.adv.k <- function(deploy.name='ALQ102'){
   for (i in 1:num.wins){
     cat(i); cat(' of '); cat(num.wins); cat('\n')
     chunk.adv <- window.adv[window.adv$window.idx==i, ]
-    if (!check.adv(chunk.adv=chunk.adv)){
+    cck <- check.adv(chunk.adv=chunk.adv, c('frozen.turb.check_adv','signal.noise.check_adv'), verbose=TRUE)
+    if (!cck){
       epsilon <- fit.epsilon(chunk.adv,freq=freq,lower= 10,upper=50,diagnostic=TRUE)
       k.out[i] <- epsilon2k(epsilon,temperature=temp.block[i],nu=nu) 
     } else {
