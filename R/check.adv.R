@@ -33,14 +33,21 @@ check.adv <- function(chunk.adv,tests='all'){
   
   if (is.null(tests)){stop("cannot perform check without any tests specified. use \"all\" for all tests")}
   
+  pub.fun <- ls(getNamespace("GDopp"), all.names=TRUE)
+  pos.tests <- pub.fun[grepl('check_adv?', pub.fun, ignore.case=TRUE)]
   if (tests[1]=='all'){
-    pub.fun <- ls(getNamespace("GDopp"), all.names=TRUE)
-    tests <- pub.fun[grepl('check_adv?', pub.fun, ignore.case=TRUE)]
+    tests = pos.tests
   }
 
   fails = vector(length = length(tests))
   for (i in seq_len(length(tests))){
-    fails[i] <- do.call(match.fun(tests[i]),list(chunk.adv=chunk.adv))
+    fails[i] = tryCatch({
+      do.call(match.fun(tests[i]),list(chunk.adv=chunk.adv))
+    }, error = function(e) {
+      fails.call <- NULL
+      test.try <- paste(pos.tests,collapse = ', or ')
+      stop(paste0('adv check for ',tests[i],' not found, try ',test.try))
+    })
   }
 
   failed <- ifelse(any(fails),TRUE,FALSE)
