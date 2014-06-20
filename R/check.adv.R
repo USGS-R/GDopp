@@ -43,7 +43,7 @@ check.adv <- function(chunk.adv,tests='signal.noise.check'){
   
 }
 #'@export
-signal.noise.check <- function(chunk.adv){
+signal.noise.check_adv <- function(chunk.adv){
 
   threshold <- 15
   s2n.rat.X <- mean(chunk.adv$signal.rat.X,na.rm=TRUE)
@@ -60,7 +60,7 @@ signal.noise.check <- function(chunk.adv){
 #'Lien, Ren-Chieh, and Eric A. D'Asaro. \emph{Measurement of turbulent kinetic energy dissipation rate with a Lagrangian float.}
 #' Journal of Atmospheric and Oceanic Technology 23, no. 7 (2006): 964-976.
 #'@export
-beam.correlation.check <- function(chunk.adv,threshold = 90){
+beam.correlation.check_adv <- function(chunk.adv,threshold = 90){
   x1 = mean(chunk.adv$correlation.X,na.rm = T)
   x2 = mean(chunk.adv$correlation.Y,na.rm = T)
   x3 = mean(chunk.adv$correlation.Z,na.rm = T)
@@ -70,7 +70,7 @@ beam.correlation.check <- function(chunk.adv,threshold = 90){
   #Bursts were discarded if the average correlation of any of three ADV beams was lower than 0.9
 }
 #'@export
-frozen.turb.check <- function(chunk.adv){
+frozen.turb.check_adv <- function(chunk.adv){
   failed = FALSE
   V <- v.calc(chunk.adv)
   v. <- chunk.adv$velocity.Z
