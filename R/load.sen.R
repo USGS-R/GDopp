@@ -12,27 +12,27 @@
 #'8 \tab Status code  \tab  \cr
 #'9 \tab Battery voltage  \tab (V) \cr
 #'10 \tab Speed of sound  \tab (m/s) \cr
-#'11 \tab Heading  \tab (°) \cr
-#'12 \tab Pitch  \tab (°) \cr
-#'13 \tab Roll  \tab (°) \cr
-#'14 \tab Temperature  \tab (°C) \cr
+#'11 \tab Heading  \tab (deg) \cr
+#'12 \tab Pitch  \tab (deg) \cr
+#'13 \tab Roll  \tab (deg) \cr
+#'14 \tab Temperature  \tab (degC) \cr
 #'15 \tab Analog input \tab  \cr
 #'16 \tab Checksum \tab (1=failed)\cr
 #'}
 #'
 #'@details a \code{GDopp} function for loading sensor diagnostic data from a file.\cr 
 
-#'@param \code{file.nm} a valid file name.
-#'@param \code{folder.nm} the folder where the data file resides.
+#'@param file.nm a valid file name.
+#'@param folder.nm the folder where the data file resides.
 #'@return a GDopp data.frame.
 #'@keywords load.sen
 #'@examples 
-#'folder.nm <- '/Users/jread/Documents/R/GDopp/supporting data/'
+#'folder.nm <- '../../../Desktop/Science Projects/GDopp/supporting data/'
 #'file.nm <- "ICACOS04.sen"
 #'data.sen <- load.sen(file.nm=file.nm, folder.nm =folder.nm)
 #'@export
 #'
-load.sen <- function(file.nm,folder.nm='/Users/jread/Documents/R/GDopp/supporting data/'){
+load.sen <- function(file.nm,folder.nm='../../../Desktop/Science Projects/GDopp/supporting data/'){
   adv.sen.names <- c('month','day','year','hour','minute','second',
                      'error.cd','status.cd','batt.v','sound.speed',
                      'heading','pitch','roll','temperature','analog.in','checksum')

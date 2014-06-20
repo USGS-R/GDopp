@@ -4,8 +4,8 @@
 #'
 #'@details a \code{GDopp} function for checking data quality.\cr 
 #'
-#'@param \code{chunk.adv} a data.frame created with load.ADV, with the window.idx column
-#'@param \code{tests} a character array of test names
+#'@param chunk.adv a data.frame created with load.ADV, with the window.idx column
+#'@param tests a character array of test names
 #'@return failed, T or F
 #'@keywords check.adv
 #'@references
@@ -20,12 +20,14 @@
 #'field in the marine surface layer." Journal of Physical Oceanography 13, no. 11 (1983): 1988-1999.
 #'
 #'@examples 
-#'folder.nm <- '/Users/jread/Documents/R/GDopp/supporting data/'
+#'\dontrun{
+#'folder.nm <- '../../../Desktop/Science Projects/GDopp/supporting data/'
 #'file.nm <- "ICACOS04.dat"
 #'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 #'window.adv <- window.ADV(data.adv,freq=32,window.mins=10)
 #'chunk.adv <- window.adv[window.adv$window.idx==7, ]
 #'check.adv(chunk.adv)
+#'}
 #'@export
 
 check.adv <- function(chunk.adv,tests=NULL){

@@ -1,5 +1,5 @@
 #'@title get kinematic viscosity
-#'@param \code{temperature} Temperature in °C of water
+#'@param temperature Temperature in degC of water
 #'@return kinematic viscosity
 #'@keywords kinematic.vis
 #'@examples 
