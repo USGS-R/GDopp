@@ -41,6 +41,9 @@ Kitaigorodskii, S. A., M. A. Donelan, J. L. Lumley, and E. A. Terray.
 \emph{Wave-turbulence interactions in the upper ocean. Part II. Statistical
 characteristics of wave and turbulent components of the random velocity
 field in the marine surface layer}. Journal of Physical Oceanography 13, no. 11 (1983): 1988-1999.
+
+#'Lien, Ren-Chieh, and Eric A. D'Asaro. \emph{Measurement of turbulent kinetic energy dissipation rate with a Lagrangian float.}
+Journal of Atmospheric and Oceanic Technology 23, no. 7 (2006): 964-976.
 }
 \keyword{check.adv}
 
