@@ -3,12 +3,14 @@
 \alias{check.adv}
 \title{checks adv}
 \usage{
-check.adv(chunk.adv, tests = "all")
+check.adv(chunk.adv, tests = "all", verbose = FALSE)
 }
 \arguments{
 \item{chunk.adv}{a data.frame created with load.ADV, with the window.idx column}
 
 \item{tests}{a character array of test names, or 'all' to run all tests}
+
+\item{verbose}{boolean for diagnostic print outs}
 }
 \value{
 failed, T or F
@@ -26,7 +28,7 @@ file.nm <- "ICACOS04.dat"
 data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 window.adv <- window_ADV(data.adv,freq=32,window.mins=10)
 chunk.adv <- window.adv[window.adv$window.idx==7, ]
-check.adv(chunk.adv,tests=c('signal.noise.check_adv','frozen.turb.check_adv'))
+check.adv(chunk.adv,tests=c('signal.noise.check_adv','frozen.turb.check_adv'),verbose=TRUE)
 }
 }
 \references{

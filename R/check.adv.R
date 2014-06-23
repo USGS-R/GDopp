@@ -27,7 +27,7 @@
 #'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 #'window.adv <- window_ADV(data.adv,freq=32,window.mins=10)
 #'chunk.adv <- window.adv[window.adv$window.idx==7, ]
-#'check.adv(chunk.adv,tests=c('signal.noise.check_adv','frozen.turb.check_adv'))
+#'check.adv(chunk.adv,tests=c('signal.noise.check_adv','frozen.turb.check_adv'),verbose=TRUE)
 #'}
 #'@export
 check.adv <- function(chunk.adv,tests='all', verbose=FALSE){
@@ -41,17 +41,26 @@ check.adv <- function(chunk.adv,tests='all', verbose=FALSE){
   }
 
   fails = vector(length = length(tests))
+  
   for (i in seq_len(length(tests))){
     fails[i] = tryCatch({
       do.call(match.fun(tests[i]),list(chunk.adv=chunk.adv))
     }, error = function(e) {
-      fails.call <- NULL
-      test.try <- paste(pos.tests,collapse = ', or ')
-      stop(paste0('adv check for ',tests[i],' not found, try ',test.try))
+      test.try <- paste(pos.tests,collapse = '\n')
+      stop(paste0('adv check for ',tests[i],' not found, try\n ',test.try))
     })
   }
-
+  
+  if (verbose){
+    dots <- get.dots(tests)
+    for (i in seq_len(length(tests))){
+      cat(tests[i]);cat(dots[i]);
+      cat(ifelse(fails[i],'failed\n','passed\n'))
+    }
+  }
+  
   failed <- ifelse(any(fails),TRUE,FALSE)
+  
   return(failed)
   
 }
@@ -94,4 +103,16 @@ frozen.turb.check_adv <- function(chunk.adv){
     failed = TRUE
   }
   return(failed)
+}
+
+get.dots <- function(chars.in){
+  
+  len_char <- nchar(chars.in)
+  mx.char <- max(len_char)
+  dots.out <- rep('',length(chars.in))
+  for (i in seq_len(length(chars.in))){
+    num.dots <- mx.char-len_char[i]+3
+    dots.out[i] <- paste(rep('.',num.dots),collapse='')
+  }
+  return(dots.out)
 }
