@@ -6,6 +6,7 @@
 #'
 #'@param chunk.adv a data.frame created with load.ADV, with the window.idx column
 #'@param tests a character array of test names, or 'all' to run all tests
+#'@param verbose boolean for diagnostic print outs
 #'@return failed, T or F
 #'@keywords check.adv
 #'@references
@@ -29,7 +30,7 @@
 #'check.adv(chunk.adv,tests=c('signal.noise.check_adv','frozen.turb.check_adv'))
 #'}
 #'@export
-check.adv <- function(chunk.adv,tests='all'){
+check.adv <- function(chunk.adv,tests='all', verbose=FALSE){
   
   if (is.null(tests)){stop("cannot perform check without any tests specified. use \"all\" for all tests")}
   
