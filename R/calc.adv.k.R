@@ -31,6 +31,7 @@ calc.adv.k <- function(deploy.name='ALQ102'){
   }
   
   plot(temp.time,k.out,pch=1,main=deploy.name,ylim=c(0,30))
+  return(data.frame('time'=temp.time,'k600'=k.out))
 }
 
 #calc.adv.k()
