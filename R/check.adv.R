@@ -90,7 +90,7 @@ beam.correlation.check_adv <- function(chunk.adv,threshold = 90){
   x2 = mean(chunk.adv$correlation.Y,na.rm = T)
   x3 = mean(chunk.adv$correlation.Z,na.rm = T)
   
-  failed = ifelse(any(c(x1,x2,x3) > threshold), TRUE, FALSE)
+  failed = ifelse(any(c(x1,x2,x3) < threshold), TRUE, FALSE)
   return(failed)
   #Bursts were discarded if the average correlation of any of three ADV beams was lower than 0.9
 }
