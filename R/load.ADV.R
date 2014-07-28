@@ -29,12 +29,12 @@
 #'@return a GDopp data.frame.
 #'@keywords methods
 #'@examples 
-#'folder.nm <- '../../../Desktop/Science Projects/GDopp/supporting data/'
-#'file.nm <- "ICACOS04.dat"
+#'folder.nm <- system.file('extdata', package = 'GDopp') 
+#'file.nm <- "ALQ102.dat"
 #'data.v <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 #'@export
 #'
-load.ADV <- function(file.nm,folder.nm='../../../Desktop/Science Projects/GDopp/supporting data/'){
+load.ADV <- function(file.nm, folder.nm){
   
   drop.cols <- c('checksum')
   adv.dat.names <- c('burst.num','ensemble.num','velocity.X','velocity.Y','velocity.Z',

@@ -3,8 +3,7 @@
 \alias{load.sen}
 \title{load sensor diagnostic data}
 \usage{
-load.sen(file.nm,
-  folder.nm = "../../../Desktop/Science Projects/GDopp/supporting data/")
+load.sen(file.nm, folder.nm)
 }
 \arguments{
 \item{file.nm}{a valid file name.}
@@ -39,9 +38,9 @@ Assumes the following format: \cr
 a \code{GDopp} function for loading sensor diagnostic data from a file.\cr
 }
 \examples{
-folder.nm <- '../../../Desktop/Science Projects/GDopp/supporting data/'
-file.nm <- "ICACOS04.sen"
-data.sen <- load.sen(file.nm=file.nm, folder.nm =folder.nm)
+folder.nm <- system.file('extdata', package = 'GDopp')
+file.nm <- "ALQ102.sen"
+data.sen <- load.sen(file.nm = file.nm, folder.nm = folder.nm)
 }
 \keyword{load.sen}
 

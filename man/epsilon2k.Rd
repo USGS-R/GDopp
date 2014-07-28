@@ -23,8 +23,8 @@ a \code{GDopp} function for converting epsilon to k600.\cr
 }
 \examples{
 \dontrun{
-folder.nm <- '../../../Desktop/Science Projects/GDopp/supporting data/'
-file.nm <- "ICACOS04.dat"
+folder.nm <- system.file('extdata', package = 'GDopp')
+file.nm <- "ALQ102.dat"
 block.use <- 7
 data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 window.adv <- window.ADV(data.adv,freq=32,window.mins=10)
