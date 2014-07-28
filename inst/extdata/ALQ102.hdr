@@ -1,0 +1,202 @@
+[C:\Users\John Crawford\Dropbox\Nortek_ADV\ALQ102.VEC]
+---------------------------------------------------------------------
+Number of measurements                291202
+Number of velocity checksum errors    0
+Number of sensor checksum errors      0
+Number of data gaps                   0
+Time of first measurement             10/29/2013 2:27:56 PM
+Time of last measurement              10/30/2013 1:08:03 PM
+
+User setup
+---------------------------------------------------------------------
+Sampling rate                         32 Hz
+Nominal velocity range                0.10 m/s
+Burst interval                        900 sec
+Samples per burst                     3200
+Sampling volume                       14.9 mm
+Measurement load                      82 %
+Transmit length                       4.0 mm
+Receive length                        0.01 m
+Output sync                           VECTOR
+Analog output                         DISABLED
+Analog input 1                        NONE
+Analog input 2                        NONE
+Power output                          DISABLED
+Output format                         VECTOR
+Velocity scaling                      0.1 mm
+IMU mode                              OFF
+IMU data type                         AHRSCC
+Powerlevel                            LOW+
+Coordinate system                     ENU
+Sound speed                           MEASURED
+Salinity                              0.0 ppt
+Distance between pings                1.01 m
+Number of beams                       3
+Software version                      1.37.02
+Deployment name                       Alq1
+Wrap mode                             OFF
+Deployment time                       10/29/2013 2:27:53 PM
+Comments                              Allequash Creek on 10/29/13; first deployment, 32 Hz, every 15 minutes for 100 s
+System1                               2
+System2                               16
+System3                               7
+System4                               44
+System5                               512
+System9                               194
+System10                              0
+System11                              20172
+System12                              0
+System13                              0
+System14                              1
+System16                              1
+System17                              7
+System22                              10800
+System28                              1
+System29                              1
+System30                              20
+System31                              15087 15117 15147 15176
+System32                              2000
+System33                              32768
+System34                              16384
+System35                              0
+System36                              0
+System37                              0
+System38                              300
+System39                              0
+System40                              3200
+System41                              4
+System42                              6711
+System43                              0
+System44                              0
+System45                              2
+Start command                         Recorder deployment
+CRC download                          ON
+
+Hardware configuration
+---------------------------------------------------------------------
+Serial number                         VEC11199
+Hardware revision                     4 (E)
+Recorder size                         3886 MByte
+Firmware version                      3.36
+Power output                          12V
+ProLog ID                             714
+ProLog firmware version               4.14
+SD Card Inserted                      YES
+SD Card Ready                         YES
+SD Card Write protected               NO
+SD Card Type                          SDHC
+SD Card Supported                     YES
+
+Head configuration
+---------------------------------------------------------------------
+Pressure sensor                       YES
+Compass                               YES
+Tilt sensor                           YES
+System 1                              1
+Head frequency                        6000 kHz
+Serial number                         VEH 5016
+IMU Sensor                            NO
+Transformation matrix                 -0.3462 -0.3252 -0.3616
+                                      0.0869 2.2522 -2.3228
+                                      2.6611 -1.2607 -1.4019
+Pressure sensor calibration           0 0 4051 14244
+Number of beams                       3
+System5                               0 0 0 0
+System7                               -14126 312 11111 -162
+                                      -15293 -862 11046 120
+System8                               1 0 0
+                                      0 -1 0
+                                      0 0 -1
+System9                               1 0 0
+                                      0 1 0
+                                      0 0 1
+System10                              0 1 -1 0
+System11                              0 1 1 0
+System13                              1481 259 7128 10848
+System14                              -13778 -367 10565 -95
+                                      -14514 -126 10717 46
+System15                              31917 -328 -242 -328
+                                      32767 -223 171 -495
+                                      31934 -9 -25 -14
+                                      0 0 0 0
+System16                              0 0 0 0
+System17                              4550
+System18                              3600
+System19                              3600
+System20                              10000
+
+Data file format
+---------------------------------------------------------------------
+[C:\Users\John Crawford\Dropbox\Nortek_ADV\ALQ102.vhd]
+ 1   Month                            (1-12)
+ 2   Day                              (1-31)
+ 3   Year
+ 4   Hour                             (0-23)
+ 5   Minute                           (0-59)
+ 6   Second                           (0-59)
+ 7   Burst counter
+ 8   No of velocity samples
+ 9   Noise amplitude (Beam1)          (counts)
+10   Noise amplitude (Beam2)          (counts)
+11   Noise amplitude (Beam3)          (counts)
+12   Noise correlation (Beam1)        (%)
+13   Noise correlation (Beam2)        (%)
+14   Noise correlation (Beam3)        (%)
+15   Dist from probe - start (Beam1)  (counts)
+16   Dist from probe - start (Beam2)  (counts)
+17   Dist from probe - start (Beam3)  (counts)
+18   Dist from probe - start (Avg)    (mm)
+19   Dist from s.vol - start (Avg)    (mm)
+20   Dist from probe - end (Beam1)    (counts)
+21   Dist from probe - end (Beam2)    (counts)
+22   Dist from probe - end (Beam3)    (counts)
+23   Dist from probe - end (Avg)      (mm)
+24   Dist from s.vol - end (Avg)      (mm)
+
+---------------------------------------------------------------------
+[C:\Users\John Crawford\Dropbox\Nortek_ADV\ALQ102.dat]
+ 1   Burst counter
+ 2   Ensemble counter                 (1-65536)
+ 3   Velocity (Beam1|X|East)          (m/s)
+ 4   Velocity (Beam2|Y|North)         (m/s)
+ 5   Velocity (Beam3|Z|Up)            (m/s)
+ 6   Amplitude (Beam1)                (counts)
+ 7   Amplitude (Beam2)                (counts)
+ 8   Amplitude (Beam3)                (counts)
+ 9   SNR (Beam1)                      (dB)
+10   SNR (Beam2)                      (dB)
+11   SNR (Beam3)                      (dB)
+12   Correlation (Beam1)              (%)
+13   Correlation (Beam2)              (%)
+14   Correlation (Beam3)              (%)
+15   Pressure                         (dbar)
+16   Analog input 1
+17   Analog input 2
+18   Checksum                         (1=failed)
+
+---------------------------------------------------------------------
+[C:\Users\John Crawford\Dropbox\Nortek_ADV\ALQ102.sen]
+ 1   Month                            (1-12)
+ 2   Day                              (1-31)
+ 3   Year
+ 4   Hour                             (0-23)
+ 5   Minute                           (0-59)
+ 6   Second                           (0-59)
+ 7   Error code
+ 8   Status code
+ 9   Battery voltage                  (V)
+10   Soundspeed                       (m/s)
+11   Heading                          (degrees)
+12   Pitch                            (degrees)
+13   Roll                             (degrees)
+14   Temperature                      (degrees C)
+15   Analog input
+16   Checksum                         (1=failed)
+
+---------------------------------------------------------------------
+[C:\Users\John Crawford\Dropbox\Nortek_ADV\ALQ102.pck]
+ 1   Sample                           
+ 2   Distance                         (mm)
+ 3   Amplitude Beam 1                 (counts)
+ 4   Amplitude Beam 2                 (counts)
+ 5   Amplitude Beam 3                 (counts)
