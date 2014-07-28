@@ -12,40 +12,44 @@
 #'
 #' Note that the transformation matrix must be recalculated every time
 #' the orientation, heading, pitch or roll changes.
+#' @param trans_matrix a matrix of tranformation values (static) in 3 x 3 matrix. 
 #' @references
 #' Lohrmann, Atle, Ramon Cabrera, and Nicholas C. Kraus. \emph{Acoustic-
 #' Doppler velocimeter (ADV) for laboratory use.} In Fundamentals and 
 #' advancements in hydraulic measurements and experimentation, pp. 351-365. ASCE, 1994.
 #' @export
 
-coord_transform <- function(){
-  # modified from transform.m
-  hh = pi*(heading-90)/180
-  pp = pi*pitch/180
-  rr = pi*roll/180
+coord_transform <- function(trans_matrix, data_v, position_data){
+  
+  x <- data_v$velocity.X
+  y <- data_v$velocity.Y
+  z <- data_v$velocity.Z
+  beam <- matrix(data=c(x, y, z), ncol = 3)
+
+  hh <- pi * (heading - 90) / 180
+  pp <- pi * pitch / 180
+  rr <- pi * roll / 180
   
   # Make heading matrix
-  H = matrix(data = c(cos(hh), sin(hh), 0, -sin(hh), cos(hh), 0, 0, 0, 1), nrow = 3, ncol = 3)
+  H <- t(matrix(data = c(cos(hh), sin(hh), 0, -sin(hh), cos(hh), 0, 0, 0, 1), ncol = 3))
   
   # Make tilt matrix
   p_data <- c(cos(pp), -sin(pp)*sin(rr), -cos(rr)*sin(pp), 0, cos(rr), -sin(rr),
               sin(pp), sin(rr)*cos(pp),  cos(pp)*cos(rr))
-  P = matrix(data = p_data, nrow = 3, ncol = 3)
+  P <- t(matrix(data = p_data, nrow = 3, ncol = 3))
   
   # Make resulting transformation matrix
-  R = H*P*T
+  R <- H %*% P %*% trans_matrix
   
   # Given beam velocities, ENU coordinates are calculated as
-  enu = R*beam
-  
-  # Given ENU velocities, beam coordinates are calculated as
-  beam = inv(R)*enu
+  enu <- R %*% beam
+
   
   
   # Transformation between beam and xyz coordinates are done using
   # the original T matrix 
-  xyz = T_org*beam
-  beam = inv(T_org)*xyz
+  xyz = T %*% beam
+  beam = solve(T) %*% xyz
   
   # Given ENU velocities, xyz coordinates are calculated as
   xyz = T_org*inv(R)*enu
