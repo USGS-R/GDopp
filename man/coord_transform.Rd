@@ -21,6 +21,17 @@ component and U represents the Up-Down component.
 Note that the transformation matrix must be recalculated every time
 the orientation, heading, pitch or roll changes.
 }
+\examples{
+trans_data <- c(2896, 2896, 0, -2896, 2896, 0, -2896, -2896, 5792) / 4096
+trans_matrix <- matrix(data = trans_data, ncol = 3, byrow = TRUE)
+position_data <- data.frame(heading = 108.2, pitch = -7.8, roll = -0.3)
+data_v <- data.frame(velocity.X =  c(-0.205, -0.205),
+velocity.Y = c(-0.5303, -0.5303), velocity.Z = c(0.3747, 0.3763))
+ENU <- coord_transform(trans_matrix, data_v, position_data)
+}
+\author{
+Jordan S. Read
+}
 \references{
 Lohrmann, Atle, Ramon Cabrera, and Nicholas C. Kraus. \emph{Acoustic-
 Doppler velocimeter (ADV) for laboratory use.} In Fundamentals and
