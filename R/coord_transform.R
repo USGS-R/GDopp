@@ -24,31 +24,30 @@ coord_transform <- function(){
   pp = pi*pitch/180
   rr = pi*roll/180
   
-  % Make heading matrix
+  # Make heading matrix
   H = matrix(data = c(cos(hh), sin(hh), 0, -sin(hh), cos(hh), 0, 0, 0, 1), nrow = 3, ncol = 3)
   
-  % Make tilt matrix
-  
+  # Make tilt matrix
   p_data <- c(cos(pp), -sin(pp)*sin(rr), -cos(rr)*sin(pp), 0, cos(rr), -sin(rr),
               sin(pp), sin(rr)*cos(pp),  cos(pp)*cos(rr))
   P = matrix(data = p_data, nrow = 3, ncol = 3)
   
-  % Make resulting transformation matrix
+  # Make resulting transformation matrix
   R = H*P*T
   
-  % Given beam velocities, ENU coordinates are calculated as
+  # Given beam velocities, ENU coordinates are calculated as
   enu = R*beam
   
-  % Given ENU velocities, beam coordinates are calculated as
+  # Given ENU velocities, beam coordinates are calculated as
   beam = inv(R)*enu
   
   
-  % Transformation between beam and xyz coordinates are done using
-  % the original T matrix 
+  # Transformation between beam and xyz coordinates are done using
+  # the original T matrix 
   xyz = T_org*beam
   beam = inv(T_org)*xyz
   
-  % Given ENU velocities, xyz coordinates are calculated as
+  # Given ENU velocities, xyz coordinates are calculated as
   xyz = T_org*inv(R)*enu
   
 }
