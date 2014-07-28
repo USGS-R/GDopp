@@ -25,8 +25,8 @@
 #'
 #'@examples 
 #'\dontrun{
-#'folder.nm <- '../../../Desktop/Science Projects/GDopp/supporting data/'
-#'file.nm <- "ICACOS04.dat"
+#'folder.nm  <- system.file('extdata', package = 'GDopp')
+#'file.nm <- "ALQ102.dat"
 #'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 #'window.adv <- window_ADV(data.adv,freq=32,window.mins=10)
 #'chunk.adv <- window.adv[window.adv$window.idx==7, ]

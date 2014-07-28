@@ -6,7 +6,7 @@ calc.adv.k <- function(deploy.name='ALQ102'){
   folder.nm <- '../../../Desktop/Science Projects/GDopp/supporting data/'
   file.nm <- paste0(deploy.name,'.dat')
   data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
-  window.adv <- window_ADV(data.adv,freq=freq,window.mins=10)
+  window.adv <- window_ADV(data.adv,freq=freq,window.mins=3)
   
   
   data.sen <- load.sen(file.nm=paste0(deploy.name,'.sen'))
@@ -19,7 +19,7 @@ calc.adv.k <- function(deploy.name='ALQ102'){
   for (i in 1:num.wins){
     cat(i); cat(' of '); cat(num.wins); cat('\n')
     chunk.adv <- window.adv[window.adv$window.idx==i, ]
-    tests <- c('frozen.turb.check_adv','signal.noise.check_adv')
+    tests <- c('frozen.turb.check_adv','beam.correlation.check_adv')
     #tests <- 'all'
     cck <- check.adv(chunk.adv=chunk.adv, tests, verbose=TRUE)
     if (!cck){
