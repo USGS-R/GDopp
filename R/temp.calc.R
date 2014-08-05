@@ -17,7 +17,7 @@
 #'file.nm <- "ALQ102.dat"
 #'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 #'window.adv <- window_ADV(data.adv,freq=32,window.mins=10)
-#'data.sen <- load.sen(file.nm="ALQ102.sen")
+#'data.sen <- load.sen(file.nm="ALQ102.sen", folder.nm = folder.nm)
 #'
 #'temp.calc(data.sen,window.adv$window.idx,freq=32)
 #'}
@@ -77,7 +77,8 @@ match_time <- function(value, window.idx, freq=32){
     block.value[i] <- mean(value[t.win==un.blocks[i]])
     time[i] <- get.sen.time(chunk.sen=data.sen[t.win==un.blocks[i], ])
   }
-  return(data.frame('time'=time, 'value'=block.value)
+  
+  return(data.frame('time'=time, 'value'=block.value))
 }
 
 get.sen.time <- function(chunk.sen){
