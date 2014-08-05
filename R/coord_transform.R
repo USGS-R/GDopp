@@ -42,7 +42,10 @@ coord_transform <- function(trans_matrix, data_v, position_data){
 
   ENU <- apply(X = t(xyz), MARGIN = 2, FUN = xyz_2_enu, 
                trans_matrix = trans_matrix, res_trans = res_trans)
-  return(t(ENU))
+  
+  ENU.df <- data.frame(t(ENU))
+  names(ENU.df) <- c('East','North','Up')
+  return(ENU.df)
 }
 
 resultant_trans <- function(trans_matrix, heading, pitch, roll){

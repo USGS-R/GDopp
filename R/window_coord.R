@@ -15,7 +15,7 @@
 #'file.nm <- "ALQ102.dat"
 #'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
 #'window.adv <- window_ADV(data.adv,freq=32,window.mins=10)
-#'data.sen <- load.sen(file.nm="ALQ102.sen")
+#'data.sen <- load.sen(file.nm="ALQ102.sen", folder.nm = folder.nm)
 #'
 #'window_coord(data.sen,window.adv$window.idx,freq=32)
 #'}
@@ -24,8 +24,8 @@
 window_coord <- function(data.sen,window.idx,freq=32){
   
   win_heading <- match_time(value=data.sen$heading, window.idx, freq)$value
-  win_pitch <- match_time(value=data.sen$heading, window.idx, freq)$value
-  win_roll <- match_time(value=data.sen$heading, window.idx, freq)$value
+  win_pitch <- match_time(value=data.sen$pitch, window.idx, freq)$value
+  win_roll <- match_time(value=data.sen$roll, window.idx, freq)$value
   
   df <- data.frame('heading'=win_heading, 'pitch' = win_pitch, 'roll' = win_roll)
   
