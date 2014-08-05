@@ -61,7 +61,7 @@ match_time <- function(value, window.idx, freq=32){
   
   t.win <- window.idx[seq(1,length(window.idx),freq)]
   
-  if (length(value) != length(t.win)){stop('win blocks are different lengths than measurement array')}
+  #if (length(value) != length(t.win)){stop('win blocks are different lengths than measurement array')}
   
   pad.num <- nrow(data.sen) - length(t.win)
   rep.pad <- rep(x=tail(t.win,1),pad.num)
