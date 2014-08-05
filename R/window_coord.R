@@ -8,7 +8,6 @@
 #'@param data.sens a data.frame created with load.ADV, with the window.idx column
 #'@param window.idx window.idx column from adv data.frame.
 #'@param freq the frequency (Hz) of the measurements
-#'@param calc.time a boolean for including a time vector in the output (will then return a data.frame)
 #'@keywords methods, math
 #'@examples 
 #'\dontrun{
@@ -22,17 +21,13 @@
 #'}
 #'@export
 
-window_coord <- function(data.sen,window.idx,freq=32,calc.time=FALSE){
+window_coord <- function(data.sen,window.idx,freq=32){
   
+  win_heading <- match_time(value=data.sen$heading, window.idx, freq)$value
+  win_pitch <- match_time(value=data.sen$heading, window.idx, freq)$value
+  win_roll <- match_time(value=data.sen$heading, window.idx, freq)$value
   
-  temps <- data.sen$temperature
+  df <- data.frame('heading'=win_heading, 'pitch' = win_pitch, 'roll' = win_roll)
   
-  df <- match_time(value=temps, window.idx, freq)
-  
-  if (calc.time){
-    names(df) <- c('time','temperature')
-    return(df)
-  } else {
-    return(df$value)
-  }
+  return(df)
 }
