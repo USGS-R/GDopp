@@ -19,8 +19,13 @@
 #'@export
 v.calc <- function(chunk.adv){
   
+  if ('velocity.X' %in% names(chunk.adv)){
+    veloc.cube <- chunk.adv$velocity.Y^2 + chunk.adv$velocity.X^2 + chunk.adv$velocity.Z^2
+  } else {
+    veloc.cube <- chunk.adv$East^2 + chunk.adv$North^2 + chunk.adv$Up^2
+  }
   
-  veloc.cube <- chunk.adv$velocity.Y^2 + chunk.adv$velocity.X^2 + chunk.adv$velocity.Z^2
+  
   veloc <- veloc.cube^(1/3)
   del.t = 1 #delta time, will be divided off, so is arbitrary unless it is irregular
   dist.traveled <- veloc*del.t

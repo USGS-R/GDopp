@@ -30,7 +30,12 @@
 
 fit.epsilon <- function(chunk.adv,freq=32, lower= 20,upper=80,diagnostic = FALSE){
   
-  xts <- ts(chunk.adv$velocity.X, frequency=freq)
+  if ('velocity.X' %in% names(chunk.adv)){
+    xts <- ts(chunk.adv$velocity.X, frequency=freq)
+  } else {
+    xts <- ts(chunk.adv$Up, frequency=freq)
+  }
+  
   w <- pwelch(xts, plot=FALSE)
   wavenum.spectra <- w$spec
   
