@@ -24,6 +24,7 @@
 #' trans_matrix <- matrix(data = trans_data, ncol = 3, byrow = TRUE)
 #' position_data <- data.frame(heading = 108.2, pitch = -7.8, roll = -0.3)
 #' data_v <- data.frame(velocity.X =  c(-0.205, -0.205), 
+#' # X is up, Y is along stream, Z is cross stream
 #' velocity.Y = c(-0.5303, -0.5303), velocity.Z = c(0.3747, 0.3763))
 #' ENU <- coord_transform(trans_matrix, data_v, position_data)
 #' @export
