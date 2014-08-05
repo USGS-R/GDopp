@@ -7,8 +7,10 @@
 #'
 #'@param data.sens a data.frame created with load.ADV, with the window.idx column
 #'@param window.idx window.idx column from adv data.frame.
+#'@param freq the frequency (Hz) of the measurements
+#'@param calc.time a boolean for including a time vector in the output (will then return a data.frame)
 #'@return a vector of averaged values
-#'@keywords temp.calc
+#'@keywords methods, math
 #'@examples 
 #'\dontrun{
 #'folder.nm <- system.file('extdata', package = 'GDopp') 
@@ -23,7 +25,25 @@
 
 temp.calc <- function(data.sen,window.idx,freq=32,calc.time=FALSE){
   
+  
+  temps <- data.sen$temperature
+
+  
+  
+  df <- match_time(value=temps, window.idx, freq)
+
+  if (calc.time){
+    names(df) <- c('time','temperature')
+    return(df)
+  } else {
+    return(df$value)
+  }
+}
+
+match_time <- function(value, window.idx, freq=32){
   if (!is.null(dim(window.idx))){stop('window.idx must be a 1D vector')}
+  
+  num_values <- ifelse(is.null(dim(value)),1,ncol(value))
   
   num.diag <- nrow(data.sen)
   num.hf <- length(window.idx)
@@ -40,30 +60,24 @@ temp.calc <- function(data.sen,window.idx,freq=32,calc.time=FALSE){
   
   
   t.win <- window.idx[seq(1,length(window.idx),freq)]
+  
+  if (length(value) != length(t.win)){stop('win blocks are different lengths than measurement array')}
+  
   pad.num <- nrow(data.sen) - length(t.win)
   rep.pad <- rep(x=tail(t.win,1),pad.num)
   t.win <- c(t.win,rep.pad)
   un.blocks <- unique(t.win)
   
   length.out <- length(un.blocks)
-  temps <- data.sen$temperature
-
-  if (length(temps) != length(t.win)){stop('win blocks are different lengths than temperature array')}
   
-  block.temp <- vector(length=length.out)
+  block.value <- vector(length = length.out)#matrix(nrow = length.out, ncol = num_values) FUTURE!!!
   time <- rep(as.POSIXct('1900-01-01'),length.out)
+  
   for (i in seq_len(length(un.blocks))){
-    block.temp[i] <- mean(temps[t.win==un.blocks[i]])
-    if (calc.time){
-      time[i] <- get.sen.time(chunk.sen=data.sen[t.win==un.blocks[i], ])
-    }
+    block.value[i] <- mean(value[t.win==un.blocks[i]])
+    time[i] <- get.sen.time(chunk.sen=data.sen[t.win==un.blocks[i], ])
   }
-
-  if (calc.time){
-    return(data.frame("time"=time,"temperature"=block.temp))
-  } else {
-    return(block.temp)
-  }
+  return(data.frame('time'=time, 'value'=block.value)
 }
 
 get.sen.time <- function(chunk.sen){
