@@ -20,12 +20,12 @@
 #' Doppler velocimeter (ADV) for laboratory use.} In Fundamentals and 
 #' advancements in hydraulic measurements and experimentation, pp. 351-365. ASCE, 1994.
 #' @examples
-#' trans_data <- c(2896, 2896, 0, -2896, 2896, 0, -2896, -2896, 5792) / 4096
-#' trans_matrix <- matrix(data = trans_data, ncol = 3, byrow = TRUE)
-#' position_data <- data.frame(heading = 108.2, pitch = -7.8, roll = -0.3)
-#' data_v <- data.frame(velocity.X =  c(-0.205, -0.205), 
+#' trans_data <- c(-0.3462, 0.0869, 2.6611, -0.3252,  2.2522, -1.2607, -0.3616, -2.3228,-1.4019) # trans matrix for example package data
+#' trans_matrix <- matrix(data = trans_data, ncol = 3, byrow = TRUE) 
+#' position_data <- data.frame(heading = 358.4, pitch = -1.38, roll = -0.3)
+#' data_v <- data.frame(velocity.X =  c(-0.205, -0.185), 
 #' # X is up, Y is along stream, Z is cross stream
-#' velocity.Y = c(-0.5303, -0.5303), velocity.Z = c(0.3747, 0.3763))
+#' velocity.Y = c(-1.5303, -1.5452), velocity.Z = c(0.3747, 0.3763))
 #' ENU <- coord_transform(trans_matrix, data_v, position_data)
 #' @export
 
@@ -35,7 +35,7 @@ coord_transform <- function(trans_matrix, data_v, position_data){
   x <- data_v$velocity.X
   y <- data_v$velocity.Y
   z <- data_v$velocity.Z
-  xyz <- matrix(data=c(x, y, z), ncol = 3)
+  xyz <- matrix(data=c(y, z, x), ncol = 3) # flipped because transform is based on z=up, x=alongstream, y=cross-stream
   heading <- position_data$heading
   pitch <- position_data$pitch
   roll <- position_data$roll 
