@@ -1,10 +1,10 @@
-calc.adv.k <- function(deploy.name="nv1/NV107", transform_coords = TRUE){
+calc.adv.k <- function(deploy.name="ALQ102", transform_coords = TRUE){
   
   
   require("GDopp")
   freq <- 32 # in Hz
   nu <- 0.2
-  folder.nm <- '../../../Desktop/Science Projects/GDopp/supporting data/'
+  folder.nm <- system.file('extdata',package = 'GDopp')
   file.nm <- paste0(deploy.name,'.dat')
   data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
   window.adv <- window_ADV(data.adv,freq=freq,window.mins=3)
@@ -17,14 +17,14 @@ calc.adv.k <- function(deploy.name="nv1/NV107", transform_coords = TRUE){
   temp.time <- temp.df$time
   num.wins <- length(temp.time)
   k.out <- vector(length=num.wins)
-  trans_data <- c(-0.3462, 0.0869, 2.6611, -0.3252,  2.2522, -1.2607, -0.3616, -2.3228,-1.4019) #c(2896, 2896, 0, -2896, 2896, 0, -2896, -2896, 5792) / 4096
+  trans_data <- c(-0.3462, 0.0869, 2.6611, -0.3252,  2.2522, -1.2607, -0.3616, -2.3228,-1.4019)
   trans_matrix <- matrix(data = trans_data, ncol = 3, byrow = TRUE) # get this from the file!!!!
   
   for (i in 1:num.wins){
     cat(i); cat(' of '); cat(num.wins); cat('\n')
     chunk.adv <- window.adv[window.adv$window.idx==i, ]
     
-    tests <- c('frozen.turb.check_adv','beam.correlation.check_adv')
+    tests <- c('frozen.turb.check_adv')#,'beam.correlation.check_adv')
     #tests <- 'all'
     cck <- check.adv(chunk.adv=chunk.adv, tests, verbose=TRUE)
     
