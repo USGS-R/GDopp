@@ -21,7 +21,7 @@
 #'time_calc(data.sen,window.adv$window.idx,freq=32)
 #'}
 #'@export
-time_calc <- function(data.sen,window.idx,freq=32,calc.time=FALSE){
+time_calc <- function(data.sen,window.idx,freq=32){
   
   pass_vars <- data.sen[, names(data.sen) %in% c("month","day","year","hour","minute","second")]
   

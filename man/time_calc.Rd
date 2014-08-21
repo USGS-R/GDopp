@@ -3,7 +3,7 @@
 \alias{time_calc}
 \title{block-averaged time}
 \usage{
-time_calc(data.sen, window.idx, freq = 32, calc.time = FALSE)
+time_calc(data.sen, window.idx, freq = 32)
 }
 \arguments{
 \item{data.sen}{a data.frame created with load.ADV, with the window.idx column}
