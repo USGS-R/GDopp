@@ -13,11 +13,11 @@
 #'\dontrun{
 #'folder.nm <- system.file('extdata', package = 'GDopp') 
 #'file.nm <- "ALQ102.dat"
-#'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
-#'window.adv <- window_ADV(data.adv,freq=32,window.mins=10)
+#'data.adv <- load_ADV(file.nm=file.nm, folder.nm =folder.nm)
+#'window.adv <- window_adv(data.adv,freq=32,window.mins=10)
 #'}
 #'@export
-window_ADV <- function(data.adv,freq=32,window.mins=10){
+window_adv <- function(data.adv,freq=32,window.mins=10){
   
   secs2mins <- 60 # number of seconds in a minute
   num.samples <- nrow(data.adv)

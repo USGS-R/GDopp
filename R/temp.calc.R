@@ -5,7 +5,7 @@
 #'@details a \code{GDopp} function for averaging water temperature measurements from ADV sensor (1Hz).\cr 
 #'assumes one second spin-up for high-frequency measurement, and a likely incomplete final second for high frequency.
 #'
-#'@param data.sens a data.frame created with load.ADV, with the window.idx column
+#'@param data.sen a data.frame created with load.ADV, with the window.idx column
 #'@param window.idx window.idx column from adv data.frame.
 #'@param freq the frequency (Hz) of the measurements
 #'@param calc.time a boolean for including a time vector in the output (will then return a data.frame)

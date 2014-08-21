@@ -39,7 +39,7 @@ fit_epsilon <- function(chunk.adv,freq=32, lower= 20,upper=80,diagnostic = FALSE
   w <- pwelch(xts, plot=FALSE)
   wavenum.spectra <- w$spec
   
-  v.mn <- v.calc(chunk.adv)
+  v.mn <- v_calc(chunk.adv)
   
   wavenum <- 2*pi*w$freq/v.mn # in radians/m
   lower.k = lower/v.mn

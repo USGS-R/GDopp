@@ -7,6 +7,10 @@ coord_transform(trans_matrix, data_v, position_data)
 }
 \arguments{
 \item{trans_matrix}{a matrix of tranformation values (static) in 3 x 3 matrix.}
+
+\item{data_v}{a velocity matrix (a data.frame)}
+
+\item{position_data}{positional data as a data.frame}
 }
 \description{
 coord_transform is modified from Transform.m (from http://www.nortek-

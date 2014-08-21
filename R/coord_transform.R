@@ -13,6 +13,8 @@
 #' Note that the transformation matrix must be recalculated every time
 #' the orientation, heading, pitch or roll changes.
 #' @param trans_matrix a matrix of tranformation values (static) in 3 x 3 matrix. 
+#' @param data_v a velocity matrix (a data.frame)
+#' @param position_data positional data as a data.frame
 #' @author
 #' Jordan S. Read
 #' @references
