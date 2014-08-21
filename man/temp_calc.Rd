@@ -30,7 +30,9 @@ data.adv <- load_adv(file.nm=file.nm, folder.nm =folder.nm)
 window.adv <- window_adv(data.adv,freq=32,window.mins=10)
 data.sen <- load_sen(file.nm="ALQ102.sen", folder.nm = folder.nm)
 
-temp_calc(data.sen,window.adv$window.idx,freq=32)
+temps <- temp_calc(data.sen,window.adv$window.idx,freq=32)
+time <- time_calc(data.sen,window.adv$window.idx,freq=32)
+plot(time,temps)
 }
 }
 \keyword{math}
