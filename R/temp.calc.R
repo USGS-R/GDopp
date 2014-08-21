@@ -15,15 +15,15 @@
 #'\dontrun{
 #'folder.nm <- system.file('extdata', package = 'GDopp') 
 #'file.nm <- "ALQ102.dat"
-#'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
-#'window.adv <- window_ADV(data.adv,freq=32,window.mins=10)
-#'data.sen <- load.sen(file.nm="ALQ102.sen", folder.nm = folder.nm)
+#'data.adv <- load_adv(file.nm=file.nm, folder.nm =folder.nm)
+#'window.adv <- window_adv(data.adv,freq=32,window.mins=10)
+#'data.sen <- load_sen(file.nm="ALQ102.sen", folder.nm = folder.nm)
 #'
-#'temp.calc(data.sen,window.adv$window.idx,freq=32)
+#'temp_calc(data.sen,window.adv$window.idx,freq=32)
 #'}
 #'@export
 
-temp.calc <- function(data.sen,window.idx,freq=32,calc.time=FALSE){
+temp_calc <- function(data.sen,window.idx,freq=32,calc.time=FALSE){
   
   
   temps <- data.sen$temperature

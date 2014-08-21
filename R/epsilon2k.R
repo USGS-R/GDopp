@@ -19,17 +19,17 @@
 #'folder.nm <- system.file('extdata', package = 'GDopp') 
 #'file.nm <- "ALQ102.dat"
 #'block.use <- 7
-#'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
-#'window.adv <- window.ADV(data.adv,freq=32,window.mins=10)
-#'data.sen <- load.sen(paste0(substr(file.nm,start=1,stop=nchar(file.nm)-4),'.sen'))
-#'temp.adv <- temp.calc(data.sen,window.adv$window.idx,freq=32)
-#'chunk.adv <- window_adv[window.adv$window.idx==block.use, ]
-#'epsilon <- fit.epsilon(chunk.adv,freq=32)
-#'epsilon2k(epsilon,temperature=temp.adv[block.use],nu=0.2)
+#'data.adv <- load_adv(file.nm=file.nm, folder.nm =folder.nm)
+#'window.adv <- window_adv(data.adv,freq=32,window.mins=10)
+#'data.sen <- load_sen(paste0(substr(file.nm,start=1,stop=nchar(file.nm)-4),'.sen'))
+#'temp.adv <- temp_calc(data.sen,window.adv$window.idx,freq=32)
+#'chunk.adv <- window.adv[window.adv$window.idx==block.use, ]
+#'epsilon <- fit_epsilon(chunk.adv,freq=32)
+#'epsilon_to_k(epsilon,temperature=temp.adv[block.use],nu=0.2)
 #'}
 #'@export
 
-epsilon2k <- function(epsilon,temperature=20,nu=0.2){
+epsilon_to_k <- function(epsilon,temperature=20,nu=0.2){
   
   if (length(epsilon) != length(temperature)){
     stop('input vectors for epsilon and temperature must have the same number of elements')

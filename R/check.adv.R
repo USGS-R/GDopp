@@ -8,7 +8,7 @@
 #'@param tests a character array of test names, or 'all' to run all tests
 #'@param verbose boolean for diagnostic print outs
 #'@return failed, T or F
-#'@keywords check.adv
+#'@keywords methods, math
 #'@references
 #'Vachon, Dominic, Yves T. Prairie, and Jonathan J. Cole. 
 #'\emph{The relationship between near-surface turbulence and gas transfer 
@@ -27,13 +27,13 @@
 #'\dontrun{
 #'folder.nm  <- system.file('extdata', package = 'GDopp')
 #'file.nm <- "ALQ102.dat"
-#'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
-#'window.adv <- window_ADV(data.adv,freq=32,window.mins=10)
+#'data.adv <- load_adv(file.nm=file.nm, folder.nm =folder.nm)
+#'window.adv <- window_adv(data.adv,freq=32,window.mins=10)
 #'chunk.adv <- window.adv[window.adv$window.idx==7, ]
 #'check.adv(chunk.adv,tests=c('signal.noise.check_adv','frozen.turb.check_adv'),verbose=TRUE)
 #'}
 #'@export
-check.adv <- function(chunk.adv,tests='all', verbose=FALSE){
+check_adv <- function(chunk.adv,tests='all', verbose=FALSE){
   
   if (is.null(tests)){stop("cannot perform check without any tests specified. use \"all\" for all tests")}
   

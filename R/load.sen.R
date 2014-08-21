@@ -29,10 +29,10 @@
 #'@examples 
 #'folder.nm <- system.file('extdata', package = 'GDopp') 
 #'file.nm <- "ALQ102.sen"
-#'data.sen <- load.sen(file.nm = file.nm, folder.nm = folder.nm)
+#'data.sen <- load_sen(file.nm = file.nm, folder.nm = folder.nm)
 #'@export
 #'
-load.sen <- function(file.nm, folder.nm){
+load_sen <- function(file.nm, folder.nm){
   adv.sen.names <- c('month','day','year','hour','minute','second',
                      'error.cd','status.cd','batt.v','sound.speed',
                      'heading','pitch','roll','temperature','analog.in','checksum')

@@ -11,13 +11,13 @@
 #'\dontrun{
 #'folder.nm <- system.file('extdata', package = 'GDopp') 
 #'file.nm <- "ALQ102.dat"
-#'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
-#'window.adv <- window_ADV(data.adv,freq=32,window.mins=10)
+#'data.adv <- load_adv(file.nm=file.nm, folder.nm =folder.nm)
+#'window.adv <- window_adv(data.adv,freq=32,window.mins=10)
 #'chunk.adv <- window.adv[window.adv$window.idx==7, ]
-#'v.calc(chunk.adv)
+#'v_calc(chunk.adv)
 #'}
 #'@export
-v.calc <- function(chunk.adv){
+v_calc <- function(chunk.adv){
   
   if ('velocity.X' %in% names(chunk.adv)){
     veloc.cube <- chunk.adv$velocity.Y^2 + chunk.adv$velocity.X^2 + chunk.adv$velocity.Z^2

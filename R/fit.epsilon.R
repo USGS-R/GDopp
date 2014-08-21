@@ -21,14 +21,14 @@
 #'\dontrun{
 #'folder.nm <- system.file('extdata', package = 'GDopp') 
 #'file.nm <- "ALQ102.dat"
-#'data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
-#'window.adv <- window_ADV(data.adv,freq=32,window.mins=10)
-#'fit.epsilon(window.adv[window.adv$window.idx==7, ],freq=32)
+#'data.adv <- load_adv(file.nm=file.nm, folder.nm =folder.nm)
+#'window.adv <- window_adv(data.adv,freq=32,window.mins=10)
+#'fit_epsilon(window.adv[window.adv$window.idx==7, ],freq=32)
 #'}
 #'@export
 #'
 
-fit.epsilon <- function(chunk.adv,freq=32, lower= 20,upper=80,diagnostic = FALSE){
+fit_epsilon <- function(chunk.adv,freq=32, lower= 20,upper=80,diagnostic = FALSE){
   
   if ('velocity.X' %in% names(chunk.adv)){
     xts <- ts(chunk.adv$velocity.X, frequency=freq)

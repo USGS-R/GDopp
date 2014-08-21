@@ -31,10 +31,10 @@
 #'@examples 
 #'folder.nm <- system.file('extdata', package = 'GDopp') 
 #'file.nm <- "ALQ102.dat"
-#'data.v <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
+#'data.v <- load_adv(file.nm=file.nm, folder.nm =folder.nm)
 #'@export
 #'
-load.ADV <- function(file.nm, folder.nm){
+load_adv <- function(file.nm, folder.nm){
   
   drop.cols <- c('checksum')
   adv.dat.names <- c('burst.num','ensemble.num','velocity.X','velocity.Y','velocity.Z',

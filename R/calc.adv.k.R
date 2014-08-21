@@ -6,8 +6,8 @@ calc.adv.k <- function(deploy.name="ALQ102", transform_coords = TRUE){
   nu <- 0.2
   folder.nm <- system.file('extdata',package = 'GDopp')
   file.nm <- paste0(deploy.name,'.dat')
-  data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
-  window.adv <- window_ADV(data.adv,freq=freq,window.mins=3)
+  data.adv <- load_adv(file.nm=file.nm, folder.nm =folder.nm)
+  window.adv <- window_adv(data.adv,freq=freq,window.mins=3)
   
   
   data.sen <- load.sen(file.nm=paste0(deploy.name,'.sen'), folder.nm)
