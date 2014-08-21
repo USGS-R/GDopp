@@ -23,9 +23,9 @@ assumes one second spin-up for high-frequency measurement, and a likely incomple
 \dontrun{
 folder.nm <- system.file('extdata', package = 'GDopp')
 file.nm <- "ALQ102.dat"
-data.adv <- load.ADV(file.nm=file.nm, folder.nm =folder.nm)
-window.adv <- window_ADV(data.adv,freq=32,window.mins=10)
-data.sen <- load.sen(file.nm="ALQ102.sen", folder.nm = folder.nm)
+data.adv <- load_adv(file.nm=file.nm, folder.nm =folder.nm)
+window.adv <- window_adv(data.adv,freq=32,window.mins=10)
+data.sen <- load_sen(file.nm="ALQ102.sen", folder.nm = folder.nm)
 
 window_coord(data.sen,window.adv$window.idx,freq=32)
 }
