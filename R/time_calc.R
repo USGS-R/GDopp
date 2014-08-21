@@ -28,7 +28,7 @@ time_calc <- function(data.sen,window.idx,freq=32,calc.time=FALSE){
   time_vecs <- match_time(value=pass_vars, window.idx, freq)
   
   time <- get_block_time(time_vecs)
-  return(time_vecs)
+  return(time)
 }
 
 # test this for date crossover!

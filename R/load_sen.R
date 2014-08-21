@@ -96,10 +96,12 @@ match_time <- function(value, window.idx, freq=32){
   }
   
   match_vals <- data.frame(block.value)
-  names(match_vals) <- df_names
+  
   
   if (is.null(df_names) & one_d){
     match_vals <- match_vals[, 1]
+  } else {
+    names(match_vals) <- df_names
   }
   return(match_vals)
 }
