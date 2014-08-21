@@ -21,7 +21,7 @@
 #'temp_calc(data.sen,window.adv$window.idx,freq=32)
 #'}
 #'@export
-temp_calc <- function(data.sen,window.idx,freq=32,calc.time=FALSE){
+temp_calc <- function(data.sen,window.idx,freq=32){
   
   pass_vars <- data.sen[, names(data.sen) %in% c("temperature")]
   
