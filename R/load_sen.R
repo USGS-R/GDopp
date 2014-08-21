@@ -39,23 +39,28 @@ load_sen <- function(file.nm, folder.nm){
   
   data.sen <- read.table(file.path(folder.nm,file.nm))
   
+  
   names(data.sen) <- adv.sen.names
   
   return(data.sen)
 }
 
 
+#takes a data.frame (value) and samples it according to the window.idx
+#returns a data.frame with the same names, that will match the window chunks
 match_time <- function(value, window.idx, freq=32){
   if (!is.null(dim(window.idx))){stop('window.idx must be a 1D vector')}
-  
-  1d = F
+  one_d <- F
   if (is.null(dim(value))){
-    1d = T
+    one_d <- T
   }
   
-  num_values <- ifelse(1d, 1, ncol(value))
+  is_date <- is_date_vec(value)
   
-  num_rows <- ifelse(1d, length(value), nrow(value))
+  df_names <- names(value)
+  num_values <- ifelse(one_d,1,ncol(value))
+  
+  num_rows <- ifelse(one_d,length(value),nrow(value))
     
   num.hf <- length(window.idx)
   
@@ -66,38 +71,57 @@ match_time <- function(value, window.idx, freq=32){
   if (hf.dif<0){stop('actual high-frequency measurements should not exceed frequency*diagnostic file. Check files')}
   
   if (step.drop>=1){
-    value <- ifelse(1d, value[-1], value[-1, ])
+    if (one_d){
+      value <- value[-1]
+    } else
+      value <- value[-1, ]
   }
-  
-  
-  t.win <- window.idx[seq(1,length(window.idx),freq)]
+   
+  t.win <- window.idx[seq(1,length(window.idx),freq)] # subsampling the window info
   
   #if (length(value) != length(t.win)){stop('win blocks are different lengths than measurement array')}
   
-  pad.num <- num_rows - length(t.win)
-  rep.pad <- rep(x=tail(t.win,1),pad.num)
-  t.win <- c(t.win,rep.pad)
+  pad.num <- num_rows - length(t.win) - 1
+  rep.pad <- rep(x = tail(t.win, 1), pad.num)
+  t.win <- c(t.win, rep.pad) # pad out to length with last val
   un.blocks <- unique(t.win)
   
   length.out <- length(un.blocks)
   
-  block.value <- vector(length = length.out)
-
-  for (i in seq_len(length(un.blocks))){
-    block.value[i] <- mean(value[t.win==un.blocks[i]])
-    chunk <- ifelse(1d, value[t.win==un.blocks[i]], value[t.win==un.blocks[i], ])
+  block.value <- matrix(nrow = length.out, ncol = num_values) 
+  
+  for (j in seq_len(length.out)){
+    u_i <- t.win==un.blocks[j]
+    block.value[j, ] <- mean_cols(value, u_i, one_d, is_date) # passing a lot of unecessary data everytime here?
   }
   
-  return(block.value)
+  match_vals <- data.frame(block.value)
+  names(match_vals) <- df_names
+  return(match_vals)
 }
 
-get.sen.time <- function(chunk.sen){
-  d.vals <- chunk.sen[, 1:6]
-  d.tail <- as.numeric(tail(d.vals,1))
-  d.head <- as.numeric(head(d.vals,1))
-  date.1 <- ISOdatetime(d.head[3],d.head[1],d.head[2],d.head[4],d.head[5],d.head[6])
-  date.2 <- ISOdatetime(d.tail[3],d.tail[1],d.tail[2],d.tail[4],d.tail[5],d.tail[6])
+mean_cols <- function(vals, u_i, one_d, is_date){
   
-  mn.date <- mean(c(date.1,date.2))
-  return(mn.date)
+  if (is_date){
+    mid_i <- floor(median(which(u_i)))
+    val_out <- as.numeric(vals[mid_i, ])
+    return(val_out)
+  }
+  
+  
+  if (one_d){
+    val_out <- mean(vals[u_i])
+  } else {
+    val_out <- colMeans(vals[u_i, ])
+  }
+  return(val_out)
 }
+
+is_date_vec <- function(value){
+  if (all(names(value) %in% c("month","day","year","hour","minute","second"))){
+    return(TRUE)
+  } else {
+    return(FALSE)
+  }
+}
+
