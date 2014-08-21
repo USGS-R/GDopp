@@ -11,7 +11,7 @@ install this package using
         repos = c("http://usgs-r.github.com", "http://cran.us.r-project.org"),
         dependencies = TRUE, type = "both")
 ```
-###`GDopp` overview (as of v0.1.0)
+###`GDopp` overview
 The `GDopp` package was created support the autmated analysis Acoustic Doppler Velocimeter data in order to estimate turbulence metrics that can be used to parameterize gas exchange. This package is in active development, so features are expected to change and be added in the near future. At present, the package is designed to interact with data from the Nortek family of ADVs, so the file importing features (see `load_adv` and `load_sen`) are limited to those file types. 
 
 `GDopp` Functions (as of v0.1.0)
