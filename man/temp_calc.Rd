@@ -11,8 +11,6 @@ temp_calc(data.sen, window.idx, freq = 32, calc.time = FALSE)
 \item{window.idx}{window.idx column from adv data.frame.}
 
 \item{freq}{the frequency (Hz) of the measurements}
-
-\item{calc.time}{a boolean for including a time vector in the output (will then return a data.frame)}
 }
 \value{
 a vector of averaged values
