@@ -37,9 +37,9 @@ check_adv <- function(chunk.adv,tests='all', verbose=FALSE){
   
   if (is.null(tests)){stop("cannot perform check without any tests specified. use \"all\" for all tests")}
   
-  
+  pos.tests = get_adv_checks()
   if (tests[1]=='all'){
-    tests = get_adv_checks()
+    tests = pos.tests
   }
 
   fails = vector(length = length(tests))
