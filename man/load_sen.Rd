@@ -26,7 +26,7 @@ Assumes the following format: \cr
 8 \tab Status code  \tab  \cr
 9 \tab Battery voltage  \tab (V) \cr
 10 \tab Speed of sound  \tab (m/s) \cr
-11 \tab Heading  \tab (\u00B0C) \cr
+11 \tab Heading  \tab (deg) \cr
 12 \tab Pitch  \tab (deg) \cr
 13 \tab Roll  \tab (deg) \cr
 14 \tab Temperature  \tab (degC) \cr
