@@ -23,6 +23,8 @@
 #'#'Lien, Ren-Chieh, and Eric A. D'Asaro. \emph{Measurement of turbulent kinetic energy dissipation rate with a Lagrangian float.}
 #' Journal of Atmospheric and Oceanic Technology 23, no. 7 (2006): 964-976.
 #'@seealso \link{get_adv_checks}
+#'@author
+#'Jordan S. Read
 #'@examples 
 #'\dontrun{
 #'folder.nm  <- system.file('extdata', package = 'GDopp')

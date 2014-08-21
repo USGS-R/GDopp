@@ -10,6 +10,7 @@
 #'@param freq the frequency (Hz) of the measurements
 #'@return a vector of averaged values
 #'@keywords methods, math
+#'@seealso \link{time_calc}, \link{load_adv}, \link{load_sen}
 #'@examples 
 #'\dontrun{
 #'folder.nm <- system.file('extdata', package = 'GDopp') 

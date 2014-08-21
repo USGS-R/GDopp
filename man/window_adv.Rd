@@ -25,7 +25,7 @@ a \code{GDopp} function for splitting sensor data into temporal segments.\cr
 \dontrun{
 folder.nm <- system.file('extdata', package = 'GDopp')
 file.nm <- "ALQ102.dat"
-data.adv <- load_ADV(file.nm=file.nm, folder.nm =folder.nm)
+data.adv <- load_adv(file.nm=file.nm, folder.nm =folder.nm)
 window.adv <- window_adv(data.adv,freq=32,window.mins=10)
 }
 }

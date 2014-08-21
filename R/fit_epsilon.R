@@ -24,6 +24,7 @@
 #'data.adv <- load_adv(file.nm=file.nm, folder.nm =folder.nm)
 #'window.adv <- window_adv(data.adv,freq=32,window.mins=10)
 #'fit_epsilon(window.adv[window.adv$window.idx==7, ],freq=32)
+#'fit_epsilon(window.adv[window.adv$window.idx==7, ],freq=32, diagnostic = TRUE)
 #'}
 #'@export
 #'

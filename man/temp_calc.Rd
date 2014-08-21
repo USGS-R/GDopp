@@ -35,6 +35,9 @@ time <- time_calc(data.sen,window.adv$window.idx,freq=32)
 plot(time,temps)
 }
 }
+\seealso{
+\link{time_calc}, \link{load_adv}, \link{load_sen}
+}
 \keyword{math}
 \keyword{methods,}
 
