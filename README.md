@@ -25,6 +25,7 @@ The `GDopp` package was created support the autmated analysis Acoustic Doppler V
 | `fit_epsilon`	| fit epsilon from block of ADV data |
 | `get_adv_checks`	| returns a list of possible check functions for the adv |
 | `get_kin_viscosity`	| get kinematic viscosity |
+| `get_metadata`  | get measurement details |
 | `load_adv`	| load ADV data |
 | `load_sen`	| load sensor diagnostic data |
 | `temp_calc`	| block-averaged temperature |
