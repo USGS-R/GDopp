@@ -30,7 +30,7 @@
 #'data.adv <- load_adv(file.nm=file.nm, folder.nm =folder.nm)
 #'window.adv <- window_adv(data.adv,freq=32,window.mins=10)
 #'chunk.adv <- window.adv[window.adv$window.idx==7, ]
-#'check.adv(chunk.adv,tests=c('signal.noise_check_adv','frozen.turb_check_adv'),verbose=TRUE)
+#'check_adv(chunk.adv,tests=c('signal.noise_check_adv','frozen.turb_check_adv'),verbose=TRUE)
 #'}
 #'@export
 check_adv <- function(chunk.adv,tests='all', verbose=FALSE){
