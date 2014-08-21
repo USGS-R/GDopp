@@ -48,19 +48,25 @@ load_sen <- function(file.nm, folder.nm){
 match_time <- function(value, window.idx, freq=32){
   if (!is.null(dim(window.idx))){stop('window.idx must be a 1D vector')}
   
-  num_values <- ifelse(is.null(dim(value)),1,ncol(value))
+  1d = F
+  if (is.null(dim(value))){
+    1d = T
+  }
   
-  num.diag <- nrow(data.sen)
+  num_values <- ifelse(1d, 1, ncol(value))
+  
+  num_rows <- ifelse(1d, length(value), nrow(value))
+    
   num.hf <- length(window.idx)
   
-  expect.hf <- num.diag*freq
+  expect.hf <- num_rows*freq
   hf.dif <- expect.hf-num.hf 
   
   step.drop <- ceiling(hf.dif/freq)
   if (hf.dif<0){stop('actual high-frequency measurements should not exceed frequency*diagnostic file. Check files')}
   
   if (step.drop>=1){
-    data.sen <- data.sen[-1, ]
+    value <- ifelse(1d, value[-1], value[-1, ])
   }
   
   
@@ -68,22 +74,21 @@ match_time <- function(value, window.idx, freq=32){
   
   #if (length(value) != length(t.win)){stop('win blocks are different lengths than measurement array')}
   
-  pad.num <- nrow(data.sen) - length(t.win)
+  pad.num <- num_rows - length(t.win)
   rep.pad <- rep(x=tail(t.win,1),pad.num)
   t.win <- c(t.win,rep.pad)
   un.blocks <- unique(t.win)
   
   length.out <- length(un.blocks)
   
-  block.value <- vector(length = length.out)#matrix(nrow = length.out, ncol = num_values) FUTURE!!!
-  time <- rep(as.POSIXct('1900-01-01'),length.out)
-  
+  block.value <- vector(length = length.out)
+
   for (i in seq_len(length(un.blocks))){
     block.value[i] <- mean(value[t.win==un.blocks[i]])
-    time[i] <- get.sen.time(chunk.sen=data.sen[t.win==un.blocks[i], ])
+    chunk <- ifelse(1d, value[t.win==un.blocks[i]], value[t.win==un.blocks[i], ])
   }
   
-  return(data.frame('time'=time, 'value'=block.value))
+  return(block.value)
 }
 
 get.sen.time <- function(chunk.sen){
