@@ -31,9 +31,13 @@ data.adv <- load_adv(file.nm=file.nm, folder.nm =folder.nm)
 window.adv <- window_adv(data.adv,freq=32,window.mins=10)
 chunk.adv <- window.adv[window.adv$window.idx==7, ]
 check_adv(chunk.adv,tests=c('signal.noise_check_adv','frozen.turb_check_adv'),verbose=TRUE)
-check_adv(chunk.adv,tests = 'beam.correlation_check_adv', verbose=TRUE, signal_threshold = 95)
+check_adv(chunk.adv,tests = 'beam.correlation_check_adv', verbose=TRUE, correlation_threshold = 95)
 ## low threshold
-check_adv(chunk.adv,tests = 'beam.correlation_check_adv', verbose=TRUE, signal_threshold = 55)
+check_adv(chunk.adv,tests = 'beam.correlation_check_adv', verbose=TRUE, correlation_threshold = 55)
+
+check_adv(chunk.adv,tests = 'signal.noise_check_adv', verbose=TRUE, signal_threshold = 15)
+## higher ratio requirement
+check_adv(chunk.adv,tests = 'signal.noise_check_adv', verbose=TRUE, signal_threshold = 50)
 }
 }
 \author{

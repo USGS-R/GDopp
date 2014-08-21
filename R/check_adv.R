@@ -34,9 +34,13 @@
 #'window.adv <- window_adv(data.adv,freq=32,window.mins=10)
 #'chunk.adv <- window.adv[window.adv$window.idx==7, ]
 #'check_adv(chunk.adv,tests=c('signal.noise_check_adv','frozen.turb_check_adv'),verbose=TRUE)
-#'check_adv(chunk.adv,tests = 'beam.correlation_check_adv', verbose=TRUE, signal_threshold = 95)
+#'check_adv(chunk.adv,tests = 'beam.correlation_check_adv', verbose=TRUE, correlation_threshold = 95)
 #' ## low threshold
-#'check_adv(chunk.adv,tests = 'beam.correlation_check_adv', verbose=TRUE, signal_threshold = 55)
+#'check_adv(chunk.adv,tests = 'beam.correlation_check_adv', verbose=TRUE, correlation_threshold = 55)
+#'
+#'check_adv(chunk.adv,tests = 'signal.noise_check_adv', verbose=TRUE, signal_threshold = 15)
+#' ## higher ratio requirement
+#'check_adv(chunk.adv,tests = 'signal.noise_check_adv', verbose=TRUE, signal_threshold = 50)
 #'}
 #'@export
 check_adv <- function(chunk.adv, tests='all', verbose=FALSE, ...){
@@ -90,14 +94,14 @@ signal.noise_check_adv <- function(chunk.adv, signal_threshold = 15){
 # references
 # Lien, Ren-Chieh, and Eric A. D'Asaro. \emph{Measurement of turbulent kinetic energy dissipation rate with a Lagrangian float.}
 # Journal of Atmospheric and Oceanic Technology 23, no. 7 (2006): 964-976.
-beam.correlation_check_adv <- function(chunk.adv, signal_threshold = 90){
+beam.correlation_check_adv <- function(chunk.adv, correlation_threshold = 90){
   
-  if (signal_threshold < 0 | signal_threshold > 100){stop('signal_theshold argument must be between 0 and 100')}
+  if (correlation_threshold < 0 | correlation_threshold > 100){stop('signal_theshold argument must be between 0 and 100')}
   x1 = mean(chunk.adv$correlation.X,na.rm = T)
   x2 = mean(chunk.adv$correlation.Y,na.rm = T)
   x3 = mean(chunk.adv$correlation.Z,na.rm = T)
   
-  failed = ifelse(any(c(x1,x2,x3) < signal_threshold), TRUE, FALSE)
+  failed = ifelse(any(c(x1,x2,x3) < correlation_threshold), TRUE, FALSE)
   return(failed)
   #Bursts were discarded if the average correlation of any of three ADV beams was lower than 0.9
 }
