@@ -97,6 +97,10 @@ match_time <- function(value, window.idx, freq=32){
   
   match_vals <- data.frame(block.value)
   names(match_vals) <- df_names
+  
+  if (is.null(df_names) & one_d){
+    match_vals <- match_vals[, 1]
+  }
   return(match_vals)
 }
 
@@ -118,7 +122,9 @@ mean_cols <- function(vals, u_i, one_d, is_date){
 }
 
 is_date_vec <- function(value){
-  if (all(names(value) %in% c("month","day","year","hour","minute","second"))){
+  if (is.null(names(value))){
+    return(FALSE)
+  } else if (all(names(value) %in% c("month","day","year","hour","minute","second"))){
     return(TRUE)
   } else {
     return(FALSE)
