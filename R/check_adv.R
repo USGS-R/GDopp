@@ -1,4 +1,4 @@
-#'@title checks adv
+#'@title performs user-specified checks on adv data
 #'@description 
 #'checks data for various quality metrics  \cr
 #'
@@ -22,7 +22,7 @@
 #'
 #'#'Lien, Ren-Chieh, and Eric A. D'Asaro. \emph{Measurement of turbulent kinetic energy dissipation rate with a Lagrangian float.}
 #' Journal of Atmospheric and Oceanic Technology 23, no. 7 (2006): 964-976.
-#'
+#'@seealso \link{get_adv_checks}
 #'@examples 
 #'\dontrun{
 #'folder.nm  <- system.file('extdata', package = 'GDopp')
