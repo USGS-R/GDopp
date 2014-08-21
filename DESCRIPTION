@@ -1,8 +1,8 @@
 Package: GDopp
 Type: Package
 Title: processing of ADV data
-Version: 0.0.2
-Date: 2013-03-01
+Version: 0.0.3
+Date: 2013-08-21
 Author: Jordan S Read
 Maintainer: Jordan S Read <jread@usgs.gov>
 Description: Methods for sensor processing of ADV data.
