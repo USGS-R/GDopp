@@ -23,11 +23,9 @@
 
 window_coord <- function(data.sen, window.idx, freq = 32){
   
-  win_heading <- match_time(value=data.sen$heading, window.idx, freq)$value
-  win_pitch <- match_time(value=data.sen$pitch, window.idx, freq)$value
-  win_roll <- match_time(value=data.sen$roll, window.idx, freq)$value
+  pass_vars <- data.sen[, names(data.sen) %in% c("heading", "pitch", "roll")]
   
-  df <- data.frame('heading'=win_heading, 'pitch' = win_pitch, 'roll' = win_roll)
+  matched_vals <- match_time(value=pass_vars, window.idx, freq)
   
-  return(df)
+  return(matched_vals)
 }

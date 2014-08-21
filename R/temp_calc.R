@@ -8,7 +8,6 @@
 #'@param data.sen a data.frame created with load.ADV, with the window.idx column
 #'@param window.idx window.idx column from adv data.frame.
 #'@param freq the frequency (Hz) of the measurements
-#'@param calc.time a boolean for including a time vector in the output (will then return a data.frame)
 #'@return a vector of averaged values
 #'@keywords methods, math
 #'@examples 
@@ -22,20 +21,11 @@
 #'temp_calc(data.sen,window.adv$window.idx,freq=32)
 #'}
 #'@export
-
 temp_calc <- function(data.sen,window.idx,freq=32,calc.time=FALSE){
   
+  pass_vars <- data.sen[, names(data.sen) %in% c("temperature")]
   
-  temps <- data.sen$temperature
+  temp <- match_time(value=pass_vars, window.idx, freq)
 
-  
-  
-  df <- match_time(value=temps, window.idx, freq)
-
-  if (calc.time){
-    names(df) <- c('time','temperature')
-    return(df)
-  } else {
-    return(df$value)
-  }
+  return(temp)
 }

@@ -12,9 +12,8 @@ calc.adv.k <- function(deploy.name="ALQ102", transform_coords = TRUE){
   
   data.sen <- load_sen(file.nm=paste0(deploy.name,'.sen'), folder.nm)
   coord.df <- window_coord(data.sen, window.adv$window.idx, freq = freq)
-  temp.df <- temp_calc(data.sen,window.adv$window.idx,freq=freq,calc.time=TRUE)
-  temp.block <- temp.df$temperature
-  temp.time <- temp.df$time
+  temp.block <- temp_calc(data.sen,window.adv$window.idx,freq=freq)
+  temp.time <- time_calc(data.sen,window.adv$window.idx,freq=freq)
   num.wins <- length(temp.time)
   k.out <- vector(length=num.wins)
   trans_data <- c(-0.3462, 0.0869, 2.6611, -0.3252,  2.2522, -1.2607, -0.3616, -2.3228,-1.4019)
@@ -22,9 +21,9 @@ calc.adv.k <- function(deploy.name="ALQ102", transform_coords = TRUE){
   
   for (i in 1:num.wins){
     cat(i); cat(' of '); cat(num.wins); cat('\n')
-    chunk.adv <- window_adv[window.adv$window.idx==i, ]
+    chunk.adv <- window.adv[window.adv$window.idx==i, ]
     
-    tests <- c('frozen.turb.check_adv')#,'beam.correlation.check_adv')
+    tests <- c('frozen.turb_check_adv')#,'beam.correlation_check_adv')
     #tests <- 'all'
     cck <- check_adv(chunk.adv=chunk.adv, tests, verbose=TRUE)
     
