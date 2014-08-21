@@ -3,10 +3,10 @@
 #'@return kinematic viscosity
 #'@keywords kinematic.vis
 #'@examples 
-#'kin.vis <- kinematic_vis(temperature=20)
+#'kin_vis <- get_kin_viscosity(temperature = 20)
 #'@export
 
-kinematic_vis <- function(temperature=20) {
+get_kin_viscosity <- function(temperature=20) {
   # from Mays 2005, Water Resources Engineering
   tempTable <- seq(0,100,by=5)
   # table in m2/s E-6

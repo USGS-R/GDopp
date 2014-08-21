@@ -6,12 +6,12 @@
 load_adv(file.nm, folder.nm)
 }
 \arguments{
-\item{file.nm}{a valid file name.}
+\item{file.nm}{a valid file name}
 
-\item{folder.nm}{the folder where the data file resides.}
+\item{folder.nm}{the folder where the data file resides}
 }
 \value{
-a GDopp data.frame.
+a GDopp data.frame
 }
 \description{
 Assumes the following format: \cr

@@ -34,7 +34,7 @@ epsilon_to_k <- function(epsilon,temperature=20,nu=0.2){
   if (length(epsilon) != length(temperature)){
     stop('input vectors for epsilon and temperature must have the same number of elements')
   }
-  k.vis <- kinematic_vis(temperature)
+  k.vis <- get_kin_viscosity(temperature)
   m4s4 <- 86400^4
   e.k <- epsilon*k.vis*m4s4 #now in m/day
   

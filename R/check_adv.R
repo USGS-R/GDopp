@@ -30,17 +30,16 @@
 #'data.adv <- load_adv(file.nm=file.nm, folder.nm =folder.nm)
 #'window.adv <- window_adv(data.adv,freq=32,window.mins=10)
 #'chunk.adv <- window.adv[window.adv$window.idx==7, ]
-#'check.adv(chunk.adv,tests=c('signal.noise.check_adv','frozen.turb.check_adv'),verbose=TRUE)
+#'check.adv(chunk.adv,tests=c('signal.noise_check_adv','frozen.turb_check_adv'),verbose=TRUE)
 #'}
 #'@export
 check_adv <- function(chunk.adv,tests='all', verbose=FALSE){
   
   if (is.null(tests)){stop("cannot perform check without any tests specified. use \"all\" for all tests")}
   
-  pub.fun <- ls(getNamespace("GDopp"), all.names=TRUE)
-  pos.tests <- pub.fun[grepl('check_adv?', pub.fun, ignore.case=TRUE)]
+  
   if (tests[1]=='all'){
-    tests = pos.tests
+    tests = get_adv_checks()
   }
 
   fails = vector(length = length(tests))
@@ -68,7 +67,7 @@ check_adv <- function(chunk.adv,tests='all', verbose=FALSE){
   
 }
 
-signal.noise.check_adv <- function(chunk.adv){
+signal.noise_check_adv <- function(chunk.adv){
 
   threshold <- 15
   s2n.rat.X <- mean(chunk.adv$signal.rat.X,na.rm=TRUE)
@@ -84,7 +83,7 @@ signal.noise.check_adv <- function(chunk.adv){
 #'@references
 #'Lien, Ren-Chieh, and Eric A. D'Asaro. \emph{Measurement of turbulent kinetic energy dissipation rate with a Lagrangian float.}
 #' Journal of Atmospheric and Oceanic Technology 23, no. 7 (2006): 964-976.
-beam.correlation.check_adv <- function(chunk.adv,threshold = 90){
+beam.correlation_check_adv <- function(chunk.adv,threshold = 90){
   x1 = mean(chunk.adv$correlation.X,na.rm = T)
   x2 = mean(chunk.adv$correlation.Y,na.rm = T)
   x3 = mean(chunk.adv$correlation.Z,na.rm = T)
@@ -94,9 +93,9 @@ beam.correlation.check_adv <- function(chunk.adv,threshold = 90){
   #Bursts were discarded if the average correlation of any of three ADV beams was lower than 0.9
 }
 
-frozen.turb.check_adv <- function(chunk.adv){
+frozen.turb_check_adv <- function(chunk.adv){
   failed = FALSE
-  V <- v_calc(chunk.adv)
+  V <- velocity_calc(chunk.adv)
   v. <- chunk.adv$velocity.Z
   mn.v. <- mean(v.) # mean of fluctuating velocity
   nrm.v. <- v.-mn.v.

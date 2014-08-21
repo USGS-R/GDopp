@@ -1,7 +1,7 @@
 calc.adv.k <- function(deploy.name="ALQ102", transform_coords = TRUE){
   
   
-  require("GDopp")
+  library"GDopp")
   freq <- 32 # in Hz
   nu <- 0.2
   folder.nm <- system.file('extdata',package = 'GDopp')

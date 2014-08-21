@@ -24,9 +24,9 @@
 #'
 #'@details a \code{GDopp} function for loading sensor data from a file.\cr 
 
-#'@param file.nm a valid file name.
-#'@param folder.nm the folder where the data file resides.
-#'@return a GDopp data.frame.
+#'@param file.nm a valid file name
+#'@param folder.nm the folder where the data file resides
+#'@return a GDopp data.frame
 #'@keywords methods
 #'@examples 
 #'folder.nm <- system.file('extdata', package = 'GDopp') 
