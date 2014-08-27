@@ -1,6 +1,6 @@
 GDopp
 ============
-
+[![Build status](https://ci.appveyor.com/api/projects/status/33liqfsmas7dee49)](https://ci.appveyor.com/project/jread-usgs/gdopp)  
 `GDopp` is short for 'gas from doppler'. A set of tools to process Acoustic Doppler Velocimeter data into estimates of gas exchange.
 
 
